@@ -1,4 +1,4 @@
-const CACHE = "tallyx-v13";
+const CACHE = "tallyx-v14";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./icons/tallyx-192.png", "./icons/tallyx-512.png"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
