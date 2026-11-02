@@ -2658,7 +2658,7 @@
           recordActivity(counter, "created", 0, 0, counter.count);
           dialog.close();
           refresh();
-          openCounter(counter.id);
+          setView("dashboard");
         } catch (_) {
           status.textContent = "TallyX could not create this counter. No incomplete counter was added.";
           status.hidden = false;
