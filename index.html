@@ -1614,8 +1614,14 @@
       if (timeTicker) clearInterval(timeTicker);
       timeTickerCounterId = counter.id;
       timeTicker = window.setInterval(() => {
-        const active = activeCounter();
-        if (active?.id === timeTickerCounterId && Number.isFinite(active.data.time.runningSince)) renderTimeClock(active);
+        const tickingCounter = counters.find(item => item.id === timeTickerCounterId);
+        if (!tickingCounter || currentView !== "counter" || activeCounterId !== timeTickerCounterId || !Number.isFinite(tickingCounter.data.time.runningSince)) {
+          clearInterval(timeTicker);
+          timeTicker = null;
+          timeTickerCounterId = null;
+          return;
+        }
+        renderTimeClock(tickingCounter);
       }, 1000);
     }
 
@@ -1654,7 +1660,8 @@
       time.paused = false;
       counter.updatedAt = new Date().toISOString();
       persist();
-      renderDetail();
+      renderTimeClock(counter);
+      syncTimeTicker(counter);
     }
 
     function pauseTimeTimer(counter) {
