@@ -324,6 +324,219 @@
     .counter-dialog { width: min(100% - 28px, 470px); max-height: min(92svh, 760px); overflow: auto; padding: 0; border: 1px solid rgba(183,192,235,.18); border-radius: 24px; color: var(--text); background: #13182c; box-shadow: 0 30px 100px rgba(0,0,0,.65); }
     .counter-dialog::backdrop { background: rgba(4,6,16,.72); backdrop-filter: blur(8px); }
     .dialog-inner { padding: 25px; }
+    .wizard-progress { margin: 0 0 22px; }
+    .wizard-progress-top { display:flex; justify-content:space-between; gap:12px; margin-bottom:11px; color:#aeb7d1; font-size:10px; }
+    .wizard-progress-top strong { color:#ded9ff; font-weight:650; }
+    .wizard-track { height:5px; overflow:hidden; border-radius:99px; background:rgba(255,255,255,.08); }
+    .wizard-track span { width:20%; height:100%; display:block; border-radius:inherit; background:linear-gradient(90deg,#9b7bff,#4bafff); box-shadow:0 0 15px rgba(112,126,255,.45); transition:width .28s ease; }
+    .wizard-steps { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; margin-top:12px; }
+    .wizard-step { min-width:0; padding:5px 2px; border:0; border-radius:8px; color:#69738f; background:transparent; cursor:pointer; font:inherit; font-size:9px; text-align:center; transition:color .18s ease,background .18s ease; }
+    .wizard-step:hover { color:#d3d9f0; background:rgba(255,255,255,.04); }
+    .wizard-step[aria-current="step"] { color:#dcd4ff; background:rgba(146,119,255,.12); }
+    .wizard-step:focus-visible,.type-option:focus-visible { outline:2px solid #89d8ff; outline-offset:2px; }
+    .wizard-panel { min-height:260px; animation:wizard-enter .22s ease both; }
+    @keyframes wizard-enter { from { opacity:0; transform:translateX(8px); } to { opacity:1; transform:translateX(0); } }
+    .wizard-panel[hidden] { display:none; }
+    .wizard-panel-intro { margin:0 0 16px; color:#939cb7; font-size:11px; line-height:1.55; }
+    .type-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .type-option { width:100%; min-height:104px; display:grid; grid-template-columns:38px minmax(0,1fr) 16px; align-content:center; align-items:start; gap:9px; padding:12px; border:1px solid rgba(177,188,225,.13); border-radius:15px; color:var(--text); background:rgba(255,255,255,.025); cursor:pointer; font:inherit; text-align:left; transition:border-color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease; }
+    .type-option:hover { transform:translateY(-1px); border-color:rgba(146,119,255,.42); }
+    .type-option[aria-pressed="true"] { border-color:rgba(155,123,255,.7); background:linear-gradient(110deg,rgba(142,105,255,.15),rgba(65,153,255,.08)); box-shadow:inset 0 0 0 1px rgba(155,123,255,.12); }
+    .type-option-icon { width:38px;height:38px;display:grid;place-items:center;border-radius:12px;color:#c8bbff;background:linear-gradient(140deg,rgba(155,123,255,.2),rgba(85,169,255,.13));font-size:18px; }
+    .type-option-copy strong,.type-option-copy small { display:block; }
+    .type-option-copy strong { font-size:11px; font-weight:650; }
+    .type-option-copy small { margin-top:4px;color:#8e98b4;font-size:9px;line-height:1.4; }
+    .type-option-check { width:16px;height:16px;margin-top:2px;border:1px solid rgba(177,188,225,.27);border-radius:50%; }
+    .type-option[aria-pressed="true"] .type-option-check { border:5px solid #a38bff;background:#fff; }
+    .customization-fields { display:grid;gap:12px; }
+    .custom-setting { display:grid;gap:7px;margin:0;padding:0;border:0; }
+    .custom-setting > label,.custom-setting legend { color:#d0d5e7;font-size:11px;font-weight:600; }
+    .custom-setting input:not([type="checkbox"]),.custom-setting select,.custom-setting textarea { width:100%;min-height:42px;padding:0 12px;border:1px solid rgba(177,188,225,.15);border-radius:12px;outline:none;color:#f4f5ff;background:rgba(5,8,20,.42);font:inherit;font-size:12px; }
+    .custom-setting select option { color:#f4f5ff;background:#141a30; }
+    .custom-setting input[type="date"] { color-scheme:dark; }
+    .custom-setting input:focus,.custom-setting select:focus,.custom-setting textarea:focus { border-color:rgba(146,119,255,.67);box-shadow:0 0 0 3px rgba(130,103,255,.12); }
+    .custom-help { margin:0;color:#8791ad;font-size:9px;line-height:1.5; }
+    .custom-toggle { display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid rgba(177,188,225,.11);border-radius:13px;background:rgba(255,255,255,.025); }
+    .custom-toggle-copy strong,.custom-toggle-copy small { display:block; }
+    .custom-toggle-copy strong { color:#d0d5e7;font-size:10px;font-weight:600; }
+    .custom-toggle-copy small { margin-top:4px;color:#8791ad;font-size:9px;line-height:1.4; }
+    .custom-toggle input { width:39px;height:22px;flex:none;appearance:none;border:1px solid rgba(177,188,225,.2);border-radius:99px;background:#252c42;cursor:pointer;transition:background .18s ease,border-color .18s ease; }
+    .custom-toggle input::before { content:"";width:16px;height:16px;display:block;margin:2px;border-radius:50%;background:#a6aec4;transition:transform .18s ease,background .18s ease; }
+    .custom-toggle input:checked { border-color:#9b7bff;background:linear-gradient(100deg,#805ce9,#368fdf); }
+    .custom-toggle input:checked::before { transform:translateX(17px);background:white; }
+    .custom-toggle input:focus-visible { outline:2px solid #89d8ff;outline-offset:3px; }
+    .custom-days { display:flex;flex-wrap:wrap;gap:7px; }
+    .custom-day { position:relative;cursor:pointer; }
+    .custom-day input { position:absolute;width:1px;height:1px;opacity:0; }
+    .custom-day span { min-width:40px;height:36px;display:grid;place-items:center;padding:0 8px;border:1px solid rgba(177,188,225,.13);border-radius:10px;color:#aeb7d1;background:rgba(255,255,255,.03);font-size:9px;transition:.16s ease; }
+    .custom-day input:checked + span { border-color:rgba(155,123,255,.72);color:#eeeaff;background:rgba(142,111,255,.17);box-shadow:0 0 0 2px rgba(142,111,255,.12); }
+    .custom-day:focus-within span { outline:2px solid #89d8ff;outline-offset:2px; }
+    .custom-validation { min-height:14px;margin:10px 0 0;color:#ff9ead;font-size:10px;line-height:1.45; }
+    .custom-validation:empty { display:none; }
+    .type-error,.name-error { min-height:14px; margin:6px 0 0; color:#ff9ead; font-size:10px; line-height:1.4; }
+    .name-error:empty,.type-error:empty { display:none; }
+    .form-field input[aria-invalid="true"] { border-color:rgba(255,142,162,.8); box-shadow:0 0 0 3px rgba(255,119,149,.1); }
+    .icon-choices { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:8px; }
+    .icon-choice { min-width:0; }
+    .icon-choice span { width:100%; height:45px; border-radius:13px; transition:border-color .16s ease,background .16s ease,box-shadow .16s ease,transform .16s ease; }
+    .icon-choice:hover span { transform:translateY(-1px);border-color:rgba(160,137,255,.42); }
+    .icon-choice input:checked + span { border-color:#a28aff;background:linear-gradient(140deg,rgba(142,111,255,.26),rgba(71,151,255,.16));box-shadow:0 0 0 2px rgba(142,111,255,.16),0 6px 18px rgba(85,95,210,.12); }
+    .icon-choice:focus-within span,.color-choice:focus-within .color-choice-card { outline:2px solid #89d8ff;outline-offset:2px; }
+    .color-choices { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px; }
+    .color-choice { min-width:0; }
+    .color-choice-card { min-height:44px;display:flex;align-items:center;gap:8px;padding:8px 9px;border:1px solid rgba(177,188,225,.12);border-radius:12px;background:rgba(255,255,255,.035);transition:border-color .16s ease,background .16s ease,box-shadow .16s ease; }
+    .color-choice-card i { width:18px;height:18px;flex:none;display:block;border-radius:50%;background:var(--swatch);box-shadow:0 0 0 1px rgba(255,255,255,.23); }
+    .color-choice-card small { overflow:hidden;color:#aeb7d1;font-size:9px;text-overflow:ellipsis;white-space:nowrap; }
+    .color-choice input:checked + .color-choice-card { border-color:color-mix(in srgb,var(--swatch) 75%,white);background:color-mix(in srgb,var(--swatch) 13%,rgba(255,255,255,.04));box-shadow:0 0 0 2px color-mix(in srgb,var(--swatch) 24%,transparent); }
+    .color-choice input:checked + .color-choice-card small { color:#f2f3ff; }
+    .wizard-note { margin:13px 0 0;color:#7f8aa8;font-size:9px;line-height:1.5; }
+    .live-preview { --preview-accent:#9b7bff;position:relative;overflow:hidden;padding:16px;border:1px solid color-mix(in srgb,var(--preview-accent) 24%,rgba(177,188,225,.1));border-radius:19px;background:radial-gradient(ellipse at 92% 0%,color-mix(in srgb,var(--preview-accent) 15%,transparent),transparent 58%),linear-gradient(145deg,rgba(23,29,52,.94),rgba(12,16,31,.96));box-shadow:0 15px 36px rgba(0,0,0,.18); }
+    .live-preview::before { content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--preview-accent) 70%,white),transparent);opacity:.55; }
+    .live-preview-head { display:flex;align-items:center;gap:11px;min-width:0; }
+    .live-preview-icon { width:43px;height:43px;display:grid;place-items:center;flex:none;border:1px solid color-mix(in srgb,var(--preview-accent) 38%,transparent);border-radius:14px;background:color-mix(in srgb,var(--preview-accent) 18%,rgba(255,255,255,.03));font-size:21px; }
+    .live-preview-heading { min-width:0;flex:1; }
+    .live-preview-heading h3 { overflow:hidden;margin:0;color:#f4f5ff;font-size:14px;font-weight:660;letter-spacing:-.025em;text-overflow:ellipsis;white-space:nowrap; }
+    .live-preview-heading p { overflow:hidden;margin:4px 0 0;color:#909ab6;font-size:9px;text-overflow:ellipsis;white-space:nowrap; }
+    .preview-type-pill,.preview-sample-pill { padding:6px 8px;border:1px solid color-mix(in srgb,var(--preview-accent) 28%,transparent);border-radius:99px;color:color-mix(in srgb,var(--preview-accent) 70%,white);background:color-mix(in srgb,var(--preview-accent) 12%,transparent);font-size:8px;font-weight:650;white-space:nowrap; }
+    .preview-section-title { margin:16px 0 9px;color:#8e99b6;font-size:8px;font-weight:720;letter-spacing:.12em;text-transform:uppercase; }
+    .simple-preview-body { display:grid;grid-template-columns:minmax(0,1fr) 154px;align-items:center;gap:12px;margin-top:16px; }
+    .preview-value-label { color:#929bb8;font-size:9px; }
+    .preview-value { display:block;margin-top:4px;color:#f8f8ff;font-size:29px;font-weight:690;letter-spacing:-.05em;font-variant-numeric:tabular-nums; }
+    .preview-detail { margin-top:5px;color:#8b95b2;font-size:9px;line-height:1.45; }
+    .preview-count-ring { width:130px;height:130px;display:grid;place-items:center;justify-self:center;border:1px solid color-mix(in srgb,var(--preview-accent) 55%,transparent);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--preview-accent) 22%,rgba(255,255,255,.04)),rgba(17,21,40,.9) 67%);box-shadow:0 0 0 8px color-mix(in srgb,var(--preview-accent) 7%,transparent),0 0 30px color-mix(in srgb,var(--preview-accent) 18%,transparent);animation:preview-breathe 2.4s ease-in-out infinite; }
+    .preview-count-ring button { width:100%;height:100%;border:0;border-radius:inherit;color:#fff;background:transparent;font-size:27px;font-weight:700;cursor:default; }
+    .preview-count-ring button:disabled { opacity:1; }
+    .preview-settings-row { display:flex;flex-wrap:wrap;gap:6px;margin-top:14px; }
+    .preview-chip { padding:6px 8px;border:1px solid rgba(177,188,225,.1);border-radius:9px;color:#aeb7d1;background:rgba(255,255,255,.035);font-size:8px; }
+    .preview-chip::before { content:"";width:6px;height:6px;display:inline-block;margin-right:5px;border-radius:50%;background:var(--preview-accent);vertical-align:1px; }
+    .preview-calendar-top { display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:15px; }
+    .preview-calendar-top strong { color:#e9ebfa;font-size:11px;font-weight:620; }
+    .preview-calendar-top span { color:#8791ad;font-size:8px; }
+    .preview-calendar { display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:9px; }
+    .preview-calendar-label { display:grid;place-items:center;color:#77829f;font-size:8px; }
+    .preview-calendar-day { min-height:27px;display:grid;place-items:center;border:1px solid rgba(177,188,225,.07);border-radius:8px;color:#9da7c1;background:rgba(255,255,255,.025);font-size:8px; }
+    .preview-calendar-day.done { border-color:color-mix(in srgb,var(--preview-accent) 45%,transparent);color:#f5f1ff;background:color-mix(in srgb,var(--preview-accent) 20%,rgba(255,255,255,.02)); }
+    .preview-calendar-day.today { box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--preview-accent) 85%,white); }
+    .preview-calendar-day.blank { border-color:transparent;background:transparent; }
+    .preview-legend { display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;color:#929bb8;font-size:8px; }
+    .preview-legend span::before { content:"";width:7px;height:7px;display:inline-block;margin-right:5px;border-radius:50%;background:var(--preview-accent); }
+    .preview-legend .incomplete::before { border:1px solid #76819f;background:transparent; }
+    .goal-preview-top { display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:22px; }
+    .goal-preview-value { color:#f5f6ff;font-size:24px;font-weight:690;letter-spacing:-.04em;font-variant-numeric:tabular-nums; }
+    .goal-preview-value small { color:#9ca6c1;font-size:10px;font-weight:500;letter-spacing:0; }
+    .goal-preview-percent { color:color-mix(in srgb,var(--preview-accent) 68%,white);font-size:11px;font-weight:650; }
+    .goal-progress-track { height:9px;overflow:hidden;margin-top:10px;border-radius:99px;background:rgba(255,255,255,.08); }
+    .goal-progress-fill { width:var(--goal-progress,0%);height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--preview-accent),color-mix(in srgb,var(--preview-accent) 45%,#54c7ff));box-shadow:0 0 15px color-mix(in srgb,var(--preview-accent) 35%,transparent);transition:width .25s ease; }
+    .goal-progress-ring { width:82px;height:82px;display:grid;place-items:center;margin:13px auto 7px;border-radius:50%;background:radial-gradient(circle,#141a30 61%,transparent 63%),conic-gradient(var(--preview-accent) var(--goal-progress,0%),rgba(255,255,255,.09) 0);box-shadow:0 0 22px color-mix(in srgb,var(--preview-accent) 12%,transparent); }
+    .goal-progress-ring strong { color:#f4f5ff;font-size:14px;font-weight:650; }
+    .goal-meta { display:flex;justify-content:space-between;gap:8px;margin-top:9px;color:#8e98b4;font-size:8px; }
+    .task-preview-list { display:grid;gap:7px;margin-top:12px; }
+    .task-preview-row { display:flex;align-items:center;gap:9px;padding:9px 10px;border:1px solid rgba(177,188,225,.09);border-radius:11px;background:rgba(255,255,255,.025); }
+    .task-preview-check { width:16px;height:16px;display:grid;place-items:center;flex:none;border:1px solid rgba(177,188,225,.2);border-radius:5px;color:#fff;font-size:10px; }
+    .task-preview-row.done .task-preview-check { border-color:var(--preview-accent);background:var(--preview-accent); }
+    .task-preview-row strong { overflow:hidden;flex:1;color:#d9def0;font-size:9px;font-weight:570;text-overflow:ellipsis;white-space:nowrap; }
+    .task-preview-row.done strong { color:#8f99b5;text-decoration:line-through; }
+    .task-preview-row small { color:#8791ad;font-size:8px;white-space:nowrap; }
+    .time-preview-face { display:grid;place-items:center;gap:5px;margin:16px auto 12px; }
+    .time-preview-clock { width:145px;height:110px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--preview-accent) 24%,rgba(177,188,225,.08));border-radius:21px;color:#f7f7ff;background:linear-gradient(145deg,color-mix(in srgb,var(--preview-accent) 10%,rgba(255,255,255,.03)),rgba(255,255,255,.015));font-size:28px;font-weight:680;font-variant-numeric:tabular-nums;letter-spacing:.02em; }
+    .time-preview-caption { color:#909ab6;font-size:8px;letter-spacing:.11em;text-transform:uppercase; }
+    .preview-start-button { min-height:35px;padding:0 14px;border:1px solid color-mix(in srgb,var(--preview-accent) 45%,transparent);border-radius:11px;color:#f5f3ff;background:linear-gradient(105deg,color-mix(in srgb,var(--preview-accent) 40%,#17172c),color-mix(in srgb,var(--preview-accent) 25%,#17223c));font:inherit;font-size:9px;font-weight:650; }
+    .preview-start-button:disabled { opacity:1;cursor:default; }
+    @keyframes preview-breathe { 50% { box-shadow:0 0 0 11px color-mix(in srgb,var(--preview-accent) 5%,transparent),0 0 38px color-mix(in srgb,var(--preview-accent) 23%,transparent); } }
+    body.motion-disabled .preview-count-ring,body.motion-disabled .goal-progress-fill { animation:none;transition:none; }
+    @media (max-width:520px) { .live-preview { padding:13px; }.simple-preview-body { grid-template-columns:minmax(0,1fr) 112px;gap:8px; }.preview-count-ring { width:100px;height:100px; }.preview-count-ring button { font-size:22px; }.preview-calendar { gap:3px; }.preview-calendar-day { min-height:24px; }.live-preview-head { gap:8px; }.preview-type-pill { font-size:7px;padding:5px 6px; } }
+    @media (prefers-reduced-motion:reduce) { .preview-count-ring,.goal-progress-fill { animation:none;transition:none; } }
+    .type-counter-interface[hidden],#counter-section[hidden] { display:none!important; }
+    .type-counter-interface { --counter-accent:#9b7bff;position:relative;overflow:hidden;margin-top:3px;padding:clamp(16px,4vw,25px);border:1px solid color-mix(in srgb,var(--counter-accent) 28%,rgba(180,190,255,.1));border-radius:24px;background:radial-gradient(ellipse at 92% 0%,color-mix(in srgb,var(--counter-accent) 16%,transparent),transparent 34rem),rgba(16,21,40,.78);box-shadow:0 18px 50px rgba(0,0,0,.19); }
+    .type-view-head { display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:20px; }
+    .type-view-kicker { margin:0 0 5px;color:color-mix(in srgb,var(--counter-accent) 65%,white);font-size:9px;font-weight:720;letter-spacing:.13em;text-transform:uppercase; }
+    .type-view-head h2 { margin:0;color:#f4f5ff;font-size:clamp(18px,4vw,24px);font-weight:680;letter-spacing:-.04em; }
+    .type-view-head p { margin:6px 0 0;color:#909ab6;font-size:10px;line-height:1.5; }
+    .type-view-icon { width:44px;height:44px;display:grid;place-items:center;flex:none;border:1px solid color-mix(in srgb,var(--counter-accent) 36%,transparent);border-radius:15px;color:#f0ecff;background:color-mix(in srgb,var(--counter-accent) 16%,rgba(255,255,255,.03));font-size:22px; }
+    .habit-calendar-panel,.task-panel,.time-panel,.goal-panel { padding:14px;border:1px solid rgba(177,188,225,.1);border-radius:17px;background:rgba(5,8,20,.24); }
+    .habit-calendar-toolbar { display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:9px; }
+    .habit-calendar-title { margin:0;color:#e8eafb;font-size:13px;font-weight:650;text-align:center; }
+    .habit-calendar-toolbar .quiet-button { min-height:34px;padding:0 10px;font-size:10px; }
+    .habit-view-toggle { display:flex;gap:5px;margin:13px 0 12px;padding:4px;border:1px solid rgba(177,188,225,.09);border-radius:11px;background:rgba(255,255,255,.025); }
+    .habit-view-toggle button { flex:1;min-height:32px;border:0;border-radius:8px;color:#929bb8;background:transparent;font:inherit;font-size:9px;cursor:pointer; }
+    .habit-view-toggle button[aria-pressed="true"] { color:#f2efff;background:linear-gradient(110deg,color-mix(in srgb,var(--counter-accent) 25%,transparent),rgba(69,132,229,.13)); }
+    .habit-calendar-grid { display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px; }
+    .habit-weekday { padding:4px 0;color:#77819e;font-size:8px;text-align:center; }
+    .habit-day { min-height:42px;position:relative;display:grid;place-items:center;border:1px solid rgba(177,188,225,.08);border-radius:11px;color:#bdc5dc;background:rgba(255,255,255,.025);font:inherit;font-size:10px;cursor:pointer;transition:background .15s ease,border-color .15s ease,transform .15s ease; }
+    .habit-day:not(:disabled):hover { transform:translateY(-1px);border-color:color-mix(in srgb,var(--counter-accent) 55%,transparent); }
+    .habit-day:disabled { opacity:.38;cursor:not-allowed; }
+    .habit-day.is-complete { border-color:color-mix(in srgb,var(--counter-accent) 65%,transparent);color:#fff;background:color-mix(in srgb,var(--counter-accent) 25%,rgba(255,255,255,.035));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--counter-accent) 19%,transparent); }
+    .habit-day.is-complete::after { content:"✓";position:absolute;right:4px;bottom:1px;color:color-mix(in srgb,var(--counter-accent) 65%,white);font-size:7px; }
+    .habit-day.is-today { box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--counter-accent) 72%,white); }
+    .habit-day.is-outside { visibility:hidden;pointer-events:none; }
+    .habit-legend { display:flex;flex-wrap:wrap;gap:13px;margin-top:10px;color:#8791ad;font-size:8px; }
+    .habit-legend span::before { content:"";width:7px;height:7px;display:inline-block;margin-right:5px;border-radius:50%;background:var(--counter-accent); }
+    .habit-legend .pending::before { border:1px solid #76819f;background:transparent; }
+    .counter-metrics { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:12px; }
+    .counter-metric { min-width:0;padding:12px;border:1px solid rgba(177,188,225,.09);border-radius:14px;background:rgba(255,255,255,.025); }
+    .counter-metric span { display:block;overflow:hidden;color:#8f99b5;font-size:8px;text-overflow:ellipsis;white-space:nowrap; }
+    .counter-metric strong { display:block;margin-top:6px;color:#f1f2fc;font-size:17px;font-weight:680;letter-spacing:-.03em;font-variant-numeric:tabular-nums; }
+    .goal-main-value { display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:23px; }
+    .goal-current { color:#f6f6ff;font-size:clamp(32px,9vw,52px);font-weight:700;letter-spacing:-.06em;font-variant-numeric:tabular-nums; }
+    .goal-target { padding-bottom:8px;color:#98a2bd;font-size:12px; }
+    .goal-target strong { color:#dfe2f1;font-weight:620; }
+    .goal-progress-track-large { height:13px;overflow:hidden;margin-top:13px;border-radius:99px;background:rgba(255,255,255,.075); }
+    .goal-progress-track-large span { width:var(--goal-fill,0%);height:100%;display:block;border-radius:inherit;background:linear-gradient(90deg,var(--counter-accent),color-mix(in srgb,var(--counter-accent) 40%,#55c7ff));box-shadow:0 0 18px color-mix(in srgb,var(--counter-accent) 30%,transparent);transition:width .25s ease; }
+    .goal-progress-ring-detail { width:116px;height:116px;display:grid;place-items:center;margin:18px auto;border-radius:50%;background:conic-gradient(var(--counter-accent) var(--goal-fill,0%),rgba(255,255,255,.08) 0);position:relative; }
+    .goal-progress-ring-detail::before { content:"";position:absolute;inset:9px;border-radius:50%;background:#10162a; }
+    .goal-progress-ring-detail strong { position:relative;font-size:22px; }
+    .goal-progress-value-detail { margin:18px 0;color:#c8d0e8;font-size:13px; }
+    .goal-facts { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:16px; }
+    .goal-fact { padding:11px;border:1px solid rgba(177,188,225,.09);border-radius:12px;color:#8791ad;background:rgba(255,255,255,.025);font-size:8px; }
+    .goal-fact strong { display:block;margin-top:5px;color:#e7e9f5;font-size:10px;font-weight:600; }
+    .goal-status { display:flex;align-items:center;gap:7px;margin-top:14px;color:#9ea8c2;font-size:9px; }
+    .goal-status::before { content:"";width:7px;height:7px;border-radius:50%;background:var(--counter-accent);box-shadow:0 0 10px var(--counter-accent); }
+    .goal-actions { display:flex;justify-content:center;gap:10px;margin-top:18px; }
+    .goal-actions .step-button { width:42px;height:42px; }
+    .task-form-grid { display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:10px; }
+    .task-form-field { display:grid;gap:6px; }
+    .task-form-field.wide { grid-column:1/-1; }
+    .task-form-field label { color:#b7bfd7;font-size:9px;font-weight:580; }
+    .task-form-field input,.task-form-field select { width:100%;min-height:39px;padding:0 10px;border:1px solid rgba(177,188,225,.13);border-radius:10px;color:#eceef9;background:#10162a;font:inherit;font-size:10px; }
+    .task-form-field input[type=date] { color-scheme:dark; }
+    .task-form-actions { display:flex;justify-content:flex-end;gap:8px;margin-top:10px; }
+    .task-form-actions button { min-height:36px; }
+    .task-list-heading { display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 9px;color:#929bb8;font-size:9px;font-weight:650; }
+    .task-list { display:grid;gap:8px; }
+    .task-item { display:grid;grid-template-columns:20px minmax(0,1fr) auto;align-items:center;gap:10px;padding:11px;border:1px solid rgba(177,188,225,.09);border-radius:12px;background:rgba(255,255,255,.025); }
+    .task-toggle { width:19px;height:19px;display:grid;place-items:center;border:1px solid rgba(177,188,225,.25);border-radius:6px;color:#fff;background:transparent;cursor:pointer; }
+    .task-item.is-done .task-toggle { border-color:var(--counter-accent);background:var(--counter-accent); }
+    .task-item-copy { min-width:0; }
+    .task-item-copy strong { display:block;overflow:hidden;color:#e4e7f4;font-size:10px;font-weight:580;text-overflow:ellipsis;white-space:nowrap; }
+    .task-item.is-done .task-item-copy strong { color:#8993af;text-decoration:line-through; }
+    .task-item-copy small { display:block;margin-top:4px;color:#7f89a6;font-size:8px; }
+    .task-item-actions { display:flex;gap:5px; }
+    .task-item-actions button { min-width:29px;min-height:29px;padding:0 6px;border:1px solid rgba(177,188,225,.1);border-radius:8px;color:#aeb7d1;background:rgba(255,255,255,.035);font:inherit;font-size:8px;cursor:pointer; }
+    .task-empty,.time-empty { padding:22px 10px;color:#8791ad;font-size:9px;text-align:center; }
+    .time-total-label { color:#8791ad;font-size:8px;font-weight:700;letter-spacing:.13em;text-align:center;text-transform:uppercase; }
+    .time-total { margin:7px 0 0;color:#f5f6ff;font-size:clamp(38px,12vw,62px);font-weight:690;letter-spacing:-.055em;font-variant-numeric:tabular-nums;text-align:center; }
+    .time-total-unit { color:#99a3bf;font-size:10px;text-align:center; }
+    .time-state { min-height:16px;margin-top:8px;color:#909ab6;font-size:9px;text-align:center; }
+    .time-controls { display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:16px 0; }
+    .time-controls button { min-height:39px; }
+    .time-controls .time-start { border-color:color-mix(in srgb,var(--counter-accent) 52%,transparent);background:linear-gradient(105deg,color-mix(in srgb,var(--counter-accent) 46%,#17172c),color-mix(in srgb,var(--counter-accent) 28%,#17223c)); }
+    .time-manual-form { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;align-items:end;gap:8px;margin-top:16px; }
+    .time-manual-form label { display:grid;gap:5px;color:#9aa4bf;font-size:8px; }
+    .time-manual-form input { width:100%;min-height:37px;padding:0 9px;border:1px solid rgba(177,188,225,.13);border-radius:9px;color:#f3f4ff;background:#10162a;font:inherit;font-size:10px; }
+    .time-manual-form button { min-height:37px;padding:0 11px; }
+    .time-entry-list { display:grid;gap:7px;margin-top:13px; }
+    .time-entry { display:flex;justify-content:space-between;gap:10px;padding:9px 10px;border:1px solid rgba(177,188,225,.08);border-radius:10px;color:#aab3cd;background:rgba(255,255,255,.025);font-size:8px; }
+    .time-entry strong { color:#e4e7f4;font-weight:600; }
+    @media (max-width:560px) { .counter-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); }.goal-facts { grid-template-columns:1fr; }.habit-calendar-grid { gap:4px; }.habit-day { min-height:36px;border-radius:9px; }.task-form-grid { grid-template-columns:1fr; }.task-form-field.wide { grid-column:auto; }.time-manual-form { grid-template-columns:1fr 1fr; }.time-manual-form button { grid-column:1/-1; } }
+    .wizard-summary { display:grid;gap:10px;margin-top:14px; }
+    .wizard-summary-row { display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid rgba(177,188,225,.09);border-radius:11px;color:#8791ae;background:rgba(255,255,255,.025);font-size:10px; }
+    .wizard-summary-row strong { overflow:hidden;color:#e3e6f5;font-weight:580;text-overflow:ellipsis;white-space:nowrap; }
+    .wizard-actions { display:flex;align-items:center;justify-content:space-between;gap:9px;margin-top:20px; }
+    .wizard-actions-end { display:flex;gap:9px;margin-left:auto; }
+    .wizard-actions button { min-height:41px; }
+    .wizard-actions button[hidden] { display:none; }
+    @media (max-width:520px) { .type-options { grid-template-columns:1fr;gap:8px; }.type-option { min-height:76px; }.icon-choices { grid-template-columns:repeat(4,minmax(0,1fr)); }.color-choices { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media (max-width:420px) { .wizard-step { font-size:8px; } .wizard-step span { display:block; overflow:hidden; text-overflow:ellipsis; } .wizard-panel { min-height:245px; } }
     .dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 21px; }
     .dialog-head h2 { margin: 0; font-size: 20px; letter-spacing: -.035em; }
     .dialog-head p { margin: 7px 0 0; color: #939cb7; font-size: 11px; line-height: 1.5; }
@@ -338,10 +551,7 @@
     .choice-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
     .icon-choice, .color-choice { position: relative; cursor: pointer; }
     .icon-choice input, .color-choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-    .icon-choice span { width: 39px; height: 39px; display: grid; place-items: center; border: 1px solid rgba(177,188,225,.12); border-radius: 12px; background: rgba(255,255,255,.035); font-size: 18px; }
-    .icon-choice input:checked + span { border-color: #a28aff; background: rgba(142,111,255,.16); box-shadow: 0 0 0 2px rgba(142,111,255,.13); }
-    .color-choice span { width: 31px; height: 31px; display: block; border: 3px solid #13182c; border-radius: 50%; background: var(--swatch); box-shadow: 0 0 0 1px rgba(255,255,255,.17); }
-    .color-choice input:checked + span { box-shadow: 0 0 0 2px #d9d0ff; }
+    .icon-choice span { display: grid; place-items: center; border: 1px solid rgba(177,188,225,.12); border-radius: 12px; background: rgba(255,255,255,.035); font-size: 18px; }
     .dialog-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 24px; }
     .dialog-actions .quiet-button, .dialog-actions .primary-button { min-height: 40px; }
     @media (max-width: 980px) { .counter-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
@@ -466,6 +676,23 @@
               <button class="reset delete-counter" id="delete-counter" type="button"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M10 11v6m4-6v6M6.5 7l1 13h9l1-13M9 7V4h6v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Delete</button>
             </div>
           </section>
+          <section class="glass-card type-counter-interface" id="habit-counter-interface" aria-labelledby="habit-view-title" hidden>
+            <header class="type-view-head"><div><p class="type-view-kicker">Daily habit tracker</p><h2 id="habit-view-title">Habit progress</h2><p id="habit-view-description"></p></div><span class="type-view-icon" id="habit-view-icon" aria-hidden="true">☀</span></header>
+            <div class="habit-calendar-panel"><div class="habit-calendar-toolbar"><button class="quiet-button" type="button" id="habit-calendar-previous" aria-label="Previous calendar period">‹</button><h3 class="habit-calendar-title" id="habit-calendar-title"></h3><button class="quiet-button" type="button" id="habit-calendar-next" aria-label="Next calendar period">›</button></div><div class="habit-view-toggle" role="group" aria-label="Calendar view"><button type="button" data-habit-view="weekly">Weekly</button><button type="button" data-habit-view="monthly">Monthly</button></div><div class="habit-calendar-grid" id="habit-calendar-grid" role="group" aria-label="Habit completion calendar"></div><div class="habit-legend"><span>Completed</span><span class="pending">Not completed</span></div></div>
+            <div class="counter-metrics"><div class="counter-metric"><span>This month</span><strong id="habit-month-count">0</strong></div><div class="counter-metric"><span>Attendance</span><strong id="habit-attendance">0%</strong></div><div class="counter-metric"><span>Current streak</span><strong id="habit-current-streak">0</strong></div><div class="counter-metric"><span>Longest streak</span><strong id="habit-longest-streak">0</strong></div></div>
+          </section>
+          <section class="glass-card type-counter-interface" id="goal-counter-interface" aria-labelledby="goal-view-title" hidden>
+            <header class="type-view-head"><div><p class="type-view-kicker">Goal tracker</p><h2 id="goal-view-title">Goal progress</h2><p id="goal-view-description"></p></div><span class="type-view-icon" id="goal-view-icon" aria-hidden="true">◎</span></header>
+            <div class="goal-panel"><div class="goal-main-value"><div><span class="preview-value-label">Current progress</span><div class="goal-current" id="goal-current-value">0</div></div><span class="goal-target">of <strong id="goal-target-value">0</strong> <span id="goal-unit"></span></span></div><div class="goal-progress-track-large" role="progressbar" id="goal-progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="goal-progress-fill"></span></div><div class="goal-progress-ring-detail" id="goal-progress-ring-detail" role="img" aria-label="Goal progress ring" hidden><strong id="goal-ring-percent">0%</strong></div><p class="goal-progress-value-detail" id="goal-progress-value-detail" hidden></p><div class="goal-status" id="goal-status">In progress</div><div class="goal-facts"><div class="goal-fact">Remaining<strong id="goal-remaining">0</strong></div><div class="goal-fact">Starting value<strong id="goal-starting-value">0</strong></div><div class="goal-fact">Deadline<strong id="goal-deadline">No deadline</strong></div></div><div class="goal-actions"><button class="step-button" type="button" data-goal-change="-1" aria-label="Decrease goal progress">−</button><button class="step-button" type="button" data-goal-change="1" aria-label="Increase goal progress">＋</button></div></div>
+          </section>
+          <section class="glass-card type-counter-interface" id="task-counter-interface" aria-labelledby="task-view-title" hidden>
+            <header class="type-view-head"><div><p class="type-view-kicker">Task tracker</p><h2 id="task-view-title">Your tasks</h2><p id="task-view-description"></p></div><span class="type-view-icon" id="task-view-icon" aria-hidden="true">☑</span></header>
+            <div class="task-panel"><form id="task-form"><input type="hidden" id="task-edit-id"><div class="task-form-grid"><div class="task-form-field wide"><label for="task-title-input">Task name</label><input id="task-title-input" maxlength="100" placeholder="Add a task" required></div><div class="task-form-field"><label for="task-category-input">Category</label><input id="task-category-input" list="task-category-options" maxlength="40" placeholder="General"><datalist id="task-category-options"></datalist></div><div class="task-form-field"><label for="task-frequency-input">Schedule</label><select id="task-frequency-input"><option value="daily">Daily</option><option value="one-time">One-time</option></select></div><div class="task-form-field"><label for="task-due-date-input">Due date</label><input id="task-due-date-input" type="date"></div></div><div class="task-form-actions"><button class="quiet-button" id="task-cancel-edit" type="button" hidden>Cancel edit</button><button class="primary-button" id="task-submit" type="submit">Add task</button></div></form><div class="task-list-heading"><span>Tasks</span><span id="task-count-label">0 tasks</span></div><div class="task-list" id="task-list" aria-live="polite"></div></div>
+          </section>
+          <section class="glass-card type-counter-interface" id="time-counter-interface" aria-labelledby="time-view-title" hidden>
+            <header class="type-view-head"><div><p class="type-view-kicker">Time tracker</p><h2 id="time-view-title">Time focused</h2><p id="time-view-description"></p></div><span class="type-view-icon" id="time-view-icon" aria-hidden="true">◷</span></header>
+            <div class="time-panel"><p class="time-total-label">Current session</p><div class="time-total" id="time-elapsed">00:00</div><p class="time-total-unit" id="time-unit-label">Minutes : seconds</p><p class="time-state" id="time-state">Ready when you are</p><div class="time-controls"><button class="primary-button time-start" id="time-start" type="button">Start timer</button><button class="quiet-button" id="time-pause" type="button" hidden>Pause</button><button class="quiet-button" id="time-stop" type="button" hidden>Stop &amp; save</button></div><form class="time-manual-form" id="time-manual-form"><label for="time-manual-value">Manual time<input id="time-manual-value" type="number" min="0.01" step="0.01" inputmode="decimal" required></label><label for="time-manual-note">Note<input id="time-manual-note" maxlength="80" placeholder="Optional"></label><button class="quiet-button" type="submit">Add time</button></form><div id="time-total-summary"></div><div class="time-entry-list" id="time-entry-list" aria-label="Recorded time entries"></div></div>
+          </section>
         </section>
         <section class="settings-view" id="settings-view" hidden aria-labelledby="settings-title">
           <div class="intro">
@@ -526,14 +753,57 @@
   <dialog class="counter-dialog" id="counter-dialog" aria-labelledby="dialog-title">
     <form class="dialog-inner" id="counter-form">
       <div class="dialog-head">
-        <div><h2 id="dialog-title">Create a counter</h2><p>Make it yours with a name, icon, and colour.</p></div>
+        <div><h2 id="dialog-title">Create a counter</h2><p id="dialog-subtitle">Personalize your next tally in a few simple steps.</p></div>
         <button class="dialog-close" id="close-dialog" type="button" aria-label="Close dialog"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </div>
-      <div class="form-field"><label for="counter-name">Counter name</label><input id="counter-name" name="name" maxlength="48" placeholder="e.g. Daily reading" required autocomplete="off"></div>
-      <div class="form-field"><label for="counter-description">Description <span style="color:#8490ad;font-weight:400">(optional)</span></label><textarea id="counter-description" name="description" maxlength="160" placeholder="What are you keeping track of?"></textarea></div>
-      <fieldset class="form-field" style="padding:0;border:0"><legend class="group-label">Choose an icon</legend><div class="choice-row" id="icon-choices"></div></fieldset>
-      <fieldset class="form-field" style="padding:0;border:0"><legend class="group-label">Choose a colour</legend><div class="choice-row" id="color-choices"></div></fieldset>
-      <div class="dialog-actions"><button class="quiet-button" id="cancel-dialog" type="button">Cancel</button><button class="primary-button" type="submit" id="save-counter">Create counter</button></div>
+      <div class="wizard-progress" aria-label="Counter setup progress">
+        <div class="wizard-progress-top"><span id="wizard-step-label" aria-live="polite">Step 1 of 5</span><strong id="wizard-step-title">Basic information</strong></div>
+        <div class="wizard-track" role="progressbar" aria-label="Counter setup progress" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="wizard-progressbar"><span id="wizard-progress-fill"></span></div>
+        <nav class="wizard-steps" aria-label="Counter setup steps">
+          <button class="wizard-step" type="button" data-wizard-nav="1" aria-current="step"><span>1 · Basic</span></button>
+          <button class="wizard-step" type="button" data-wizard-nav="2"><span>2 · Type</span></button>
+          <button class="wizard-step" type="button" data-wizard-nav="3"><span>3 · Style</span></button>
+          <button class="wizard-step" type="button" data-wizard-nav="4"><span>4 · Preview</span></button>
+          <button class="wizard-step" type="button" data-wizard-nav="5"><span>5 · Create</span></button>
+        </nav>
+      </div>
+      <section class="wizard-panel" data-wizard-panel="1" aria-labelledby="wizard-panel-title-1" tabindex="-1">
+        <p class="wizard-panel-intro" id="wizard-panel-title-1">Start with a clear name, then choose the icon and colour that feel right.</p>
+        <div class="form-field"><label for="counter-name">Counter name <span style="color:#a38bff">· Required</span></label><input id="counter-name" name="name" maxlength="48" placeholder="e.g. Daily reading" required autocomplete="off" aria-describedby="counter-name-error"><p class="name-error" id="counter-name-error" role="alert" aria-live="polite"></p></div>
+        <div class="form-field"><label for="counter-description">Description <span style="color:#8490ad;font-weight:400">(optional)</span></label><textarea id="counter-description" name="description" maxlength="160" placeholder="What are you keeping track of?"></textarea></div>
+        <fieldset class="form-field" style="padding:0;border:0"><legend class="group-label">Choose an icon</legend><div class="icon-choices" id="icon-choices"></div></fieldset>
+        <fieldset class="form-field" style="padding:0;border:0"><legend class="group-label">Theme colour</legend><div class="color-choices" id="color-choices"></div></fieldset>
+      </section>
+      <section class="wizard-panel" data-wizard-panel="2" aria-labelledby="wizard-panel-title-2" tabindex="-1" hidden>
+        <p class="wizard-panel-intro" id="wizard-panel-title-2">Choose the kind of counter you want to build. Select one option to continue.</p>
+        <div class="type-options" role="group" aria-label="Counter type" aria-describedby="counter-type-error">
+          <button class="type-option" type="button" data-counter-type="simple" aria-pressed="false"><span class="type-option-icon" aria-hidden="true">＋</span><span class="type-option-copy"><strong>Simple Counter</strong><small>Count anything using a simple counting button.</small></span><span class="type-option-check" aria-hidden="true"></span></button>
+          <button class="type-option" type="button" data-counter-type="daily-habit" aria-pressed="false"><span class="type-option-icon" aria-hidden="true">☀</span><span class="type-option-copy"><strong>Daily Habit Tracker</strong><small>Track daily habits such as gym attendance, reading and exercise.</small></span><span class="type-option-check" aria-hidden="true"></span></button>
+          <button class="type-option" type="button" data-counter-type="goal" aria-pressed="false"><span class="type-option-icon" aria-hidden="true">◎</span><span class="type-option-copy"><strong>Goal Tracker</strong><small>Track progress towards a specific target.</small></span><span class="type-option-check" aria-hidden="true"></span></button>
+          <button class="type-option" type="button" data-counter-type="task" aria-pressed="false"><span class="type-option-icon" aria-hidden="true">☑</span><span class="type-option-copy"><strong>Task Tracker</strong><small>Create, organize and complete tasks.</small></span><span class="type-option-check" aria-hidden="true"></span></button>
+          <button class="type-option" type="button" data-counter-type="time" aria-pressed="false"><span class="type-option-icon" aria-hidden="true">◷</span><span class="type-option-copy"><strong>Time Tracker</strong><small>Track time spent on activities.</small></span><span class="type-option-check" aria-hidden="true"></span></button>
+        </div>
+        <p class="type-error" id="counter-type-error" role="alert" aria-live="polite"></p>
+        <p class="wizard-note">Counter type selection is saved in this wizard for now. Type-specific behavior will be added in a later phase.</p>
+      </section>
+      <section class="wizard-panel" data-wizard-panel="3" aria-labelledby="wizard-panel-title-3" tabindex="-1" hidden>
+        <p class="wizard-panel-intro" id="wizard-panel-title-3">Fine-tune the settings for your selected counter type.</p>
+        <div id="customization-content" class="customization-fields" aria-live="polite"></div>
+        <p class="custom-validation" id="customization-error" role="alert" aria-live="polite"></p>
+      </section>
+      <section class="wizard-panel" data-wizard-panel="4" aria-labelledby="wizard-panel-title-4" tabindex="-1" hidden>
+        <p class="wizard-panel-intro" id="wizard-panel-title-4">Here’s a live preview of your counter. Preview controls are illustrative and won’t change saved counters.</p>
+        <div id="wizard-preview" aria-live="polite"></div>
+      </section>
+      <section class="wizard-panel" data-wizard-panel="5" aria-labelledby="wizard-panel-title-5" tabindex="-1" hidden>
+        <p class="wizard-panel-intro" id="wizard-panel-title-5">Review your setup. Your counter will be saved on this device and opened when you finish.</p>
+        <div class="wizard-summary" aria-live="polite"><div class="wizard-summary-row"><span>Name</span><strong id="wizard-summary-name">—</strong></div><div class="wizard-summary-row"><span>Type</span><strong id="wizard-summary-type">Standard tally</strong></div><div class="wizard-summary-row"><span>Appearance</span><strong id="wizard-summary-style">🔢 · Violet</strong></div></div>
+        <p class="wizard-note" id="wizard-finish-status" role="status" aria-live="polite" hidden></p>
+      </section>
+      <div class="wizard-actions">
+        <button class="quiet-button" id="cancel-dialog" type="button">Cancel</button>
+        <div class="wizard-actions-end"><button class="quiet-button" id="wizard-back" type="button" hidden>Back</button><button class="primary-button" id="wizard-next" type="button">Continue</button><button class="primary-button" type="submit" id="save-counter" hidden>Create counter</button></div>
+      </div>
     </form>
   </dialog>
 
@@ -563,6 +833,15 @@
     let activeCounterId = null;
     let editingCounterId = null;
     let currentView = "dashboard";
+    let wizardStep = 1;
+    let wizardState = { name: "", description: "", icon: ICONS[0], color: COLORS[0].value, counterType: "", customizations: {} };
+    let renderedCustomizationType = "";
+    let createSubmissionInProgress = false;
+    let timeTicker = null;
+    let timeTickerCounterId = null;
+    let editingTaskId = null;
+    let taskEditorCounterId = null;
+    const habitCalendarCursorByCounterId = new Map();
     let storageWritable = true;
     let preferencesWritable = true;
     let activityRecords = [];
@@ -574,13 +853,106 @@
     let countAnimationFrame = 0;
     let audioContext = null;
     const undoByCounterId = new Map();
+    const incrementOverrideByCounterId = new Map();
     const MILESTONES = [100, 500, 1000];
 
-    function makeId() {
+    function makeId(extraCounters = []) {
       let id;
       do { id = `counter-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`; }
-      while (counters.some(counter => counter.id === id));
+      while (counters.some(counter => counter.id === id) || extraCounters.some(counter => counter.id === id));
       return id;
+    }
+
+    function isRecord(value) { return Boolean(value && typeof value === "object" && !Array.isArray(value)); }
+
+    function defaultCounterData(type) {
+      if (type === "daily-habit") return { habit: { completedDates: [] } };
+      if (type === "task") return { tasks: [] };
+      if (type === "time") return { time: { totalSeconds: 0, runningSince: null, sessionStartedAt: null, sessionBaseSeconds: 0, paused: false, entries: [] } };
+      return {};
+    }
+
+    function validDateKey(value) {
+      if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+      const [year, month, day] = value.split("-").map(Number);
+      const date = new Date(year, month - 1, day);
+      return date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+    }
+
+    function normalizeCounterRecord(counter) {
+      const aliases = { habit: "daily-habit", "simple-counter": "simple" };
+      const rawType = aliases[counter.type] || counter.type;
+      const type = Object.hasOwn(COUNTER_TYPE_LABELS, rawType) ? rawType : "simple";
+      const defaults = defaultCustomizations()[type];
+      const source = isRecord(counter.settings) ? counter.settings : {};
+      if (type === "simple" && !Object.hasOwn(source, "defaultIncrement")) defaults.defaultIncrement = preferences.defaultIncrement;
+      const settings = { ...defaults, ...source };
+      const allowedIncrements = [1, 5, 10, 50];
+      if (type === "simple") {
+        if (!Number.isFinite(settings.initialCount) || settings.initialCount < 0) settings.initialCount = defaults.initialCount;
+        if (!allowedIncrements.includes(settings.defaultIncrement)) settings.defaultIncrement = defaults.defaultIncrement;
+        for (const key of ["allowDecrement", "enableUndo", "enableReset"]) if (typeof settings[key] !== "boolean") settings[key] = defaults[key];
+      } else if (type === "daily-habit") {
+        if (!["daily", "selected-days"].includes(settings.frequency)) settings.frequency = defaults.frequency;
+        if (!Array.isArray(settings.selectedDays)) settings.selectedDays = defaults.selectedDays.slice();
+        else settings.selectedDays = settings.selectedDays.filter(day => ["mon", "tue", "wed", "thu", "fri", "sat", "sun"].includes(day));
+        if (!["weekly", "monthly"].includes(settings.calendarView)) settings.calendarView = defaults.calendarView;
+        if (!Number.isInteger(settings.completionGoal) || settings.completionGoal < 1) settings.completionGoal = defaults.completionGoal;
+        if (typeof settings.allowPreviousDateEditing !== "boolean") settings.allowPreviousDateEditing = defaults.allowPreviousDateEditing;
+      } else if (type === "goal") {
+        if (!Number.isFinite(settings.targetValue) || settings.targetValue <= 0) settings.targetValue = defaults.targetValue;
+        if (!Number.isFinite(settings.startingValue) || settings.startingValue < 0) settings.startingValue = defaults.startingValue;
+        if (typeof settings.measurementUnit !== "string") settings.measurementUnit = defaults.measurementUnit;
+        if (typeof settings.goalDeadline !== "string") settings.goalDeadline = defaults.goalDeadline;
+        if (!["bar", "ring", "value"].includes(settings.progressDisplay)) settings.progressDisplay = defaults.progressDisplay;
+      } else if (type === "task") {
+        if (!["daily", "one-time"].includes(settings.taskFrequency)) settings.taskFrequency = defaults.taskFrequency;
+        if (!Array.isArray(settings.categories)) settings.categories = defaults.categories.slice();
+        else settings.categories = settings.categories.filter(item => typeof item === "string" && item.trim()).map(item => item.trim());
+        if (typeof settings.dueDate !== "string") settings.dueDate = defaults.dueDate;
+        if (!["not-started", "in-progress", "completed"].includes(settings.completionStatus)) settings.completionStatus = defaults.completionStatus;
+      } else if (type === "time") {
+        if (!["minutes", "hours"].includes(settings.timeUnit)) settings.timeUnit = defaults.timeUnit;
+        for (const key of ["manualTimeEntry", "startStopTimer", "totalTimeDisplay"]) if (typeof settings[key] !== "boolean") settings[key] = defaults[key];
+      }
+
+      const now = new Date().toISOString();
+      const createdAt = typeof counter.createdAt === "string" && Number.isFinite(Date.parse(counter.createdAt)) ? counter.createdAt : now;
+      const updatedAt = typeof counter.updatedAt === "string" && Number.isFinite(Date.parse(counter.updatedAt)) ? counter.updatedAt : createdAt;
+      const color = COLORS.some(item => item.value === counter.color) ? counter.color
+        : COLORS.some(item => item.value === counter.themeColor) ? counter.themeColor : COLORS[0].value;
+      const rawData = isRecord(counter.data) ? counter.data : {};
+      const data = { ...defaultCounterData(type), ...rawData };
+      if (type === "daily-habit") {
+        const sourceHabit = isRecord(rawData.habit) ? rawData.habit : {};
+        data.habit = { ...defaultCounterData(type).habit, ...sourceHabit };
+        data.habit.completedDates = Array.from(new Set((Array.isArray(sourceHabit.completedDates) ? sourceHabit.completedDates : []).filter(validDateKey))).sort();
+      } else if (type === "task") {
+        data.tasks = (Array.isArray(rawData.tasks) ? rawData.tasks : []).filter(task => isRecord(task) && typeof task.id === "string" && task.id && typeof task.title === "string" && task.title.trim()).map(task => ({
+          ...task,
+          title: task.title.trim(),
+          category: typeof task.category === "string" && task.category.trim() ? task.category.trim() : "General",
+          frequency: task.frequency === "daily" ? "daily" : "one-time",
+          dueDate: validDateKey(task.dueDate) ? task.dueDate : "",
+          completed: Boolean(task.completed),
+          completedDates: Array.from(new Set((Array.isArray(task.completedDates) ? task.completedDates : []).filter(validDateKey)))
+        }));
+      } else if (type === "time") {
+        const sourceTime = isRecord(rawData.time) ? rawData.time : {};
+        const defaultTime = defaultCounterData(type).time;
+        data.time = { ...defaultTime, ...sourceTime };
+        data.time.totalSeconds = Number.isFinite(sourceTime.totalSeconds) && sourceTime.totalSeconds >= 0 ? sourceTime.totalSeconds : 0;
+        data.time.runningSince = Number.isFinite(sourceTime.runningSince) && sourceTime.runningSince > 0 ? sourceTime.runningSince : null;
+        data.time.sessionStartedAt = Number.isFinite(sourceTime.sessionStartedAt) && sourceTime.sessionStartedAt > 0 ? sourceTime.sessionStartedAt : null;
+        data.time.sessionBaseSeconds = Number.isFinite(sourceTime.sessionBaseSeconds) && sourceTime.sessionBaseSeconds >= 0 ? sourceTime.sessionBaseSeconds : data.time.totalSeconds;
+        data.time.paused = Boolean(sourceTime.paused);
+        data.time.entries = (Array.isArray(sourceTime.entries) ? sourceTime.entries : []).filter(entry => isRecord(entry) && typeof entry.id === "string" && Number.isFinite(entry.durationSeconds) && entry.durationSeconds > 0).map(entry => ({ ...entry }));
+      }
+      return { ...counter, color, themeColor: color, type, settings, data, createdAt, updatedAt };
+    }
+
+    function normalizeCounterRecords(records) {
+      return records.map(normalizeCounterRecord);
     }
 
     function isValidData(data) {
@@ -606,30 +978,59 @@
             storageWritable = false;
             return;
           }
-          counters = data.counters;
+          counters = normalizeCounterRecords(data.counters);
           activeCounterId = counters.some(counter => counter.id === data.activeId) ? data.activeId : null;
+          if (JSON.stringify(counters) !== JSON.stringify(data.counters)) persist();
           return;
         }
 
         const alreadyMigrated = localStorage.getItem(MIGRATION_KEY) === "complete";
-        if (!alreadyMigrated) {
-          const oldValue = localStorage.getItem(LEGACY_KEY);
-          const oldCount = oldValue === null ? 0 : Number(oldValue);
-          const firstCounter = {
-            id: makeId(), name: "My First Counter", description: "Your original tally, ready to keep going.",
-            icon: "🔢", color: COLORS[0].value,
-            count: Number.isFinite(oldCount) && oldCount >= 0 ? oldCount : 0
-          };
-          counters = [firstCounter];
-          activeCounterId = firstCounter.id;
-        }
+        if (alreadyMigrated) return;
+        const oldValue = localStorage.getItem(LEGACY_KEY);
+        const oldCount = oldValue === null ? 0 : Number(oldValue);
+        const firstCounter = normalizeCounterRecord({
+          id: makeId(), name: "My First Counter", description: "Your original tally, ready to keep going.",
+          icon: "🔢", color: COLORS[0].value,
+          count: Number.isFinite(oldCount) && oldCount >= 0 ? oldCount : 0
+        });
+        counters = [firstCounter];
+        activeCounterId = firstCounter.id;
         const saved = persist();
-        if (saved && !alreadyMigrated) localStorage.setItem(MIGRATION_KEY, "complete");
+        if (saved) localStorage.setItem(MIGRATION_KEY, "complete");
       } catch (_) {
         storageWritable = false;
         if (!counters.length) counters = [{
           id: makeId(), name: "My First Counter", description: "", icon: "🔢", color: COLORS[0].value, count: 0
         }];
+      }
+    }
+
+    function persistNewCounter(counter) {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        let storedCounters = [];
+        if (raw !== null) {
+          const stored = JSON.parse(raw);
+          if (!isValidData(stored)) throw new Error("Counter storage is invalid; it was left untouched.");
+          storedCounters = normalizeCounterRecords(stored.counters);
+        } else {
+          storedCounters = normalizeCounterRecords(counters);
+        }
+
+        const merged = new Map(storedCounters.map(item => [item.id, item]));
+        counters.forEach(item => { if (!merged.has(item.id)) merged.set(item.id, normalizeCounterRecord(item)); });
+        const existingIds = Array.from(merged.values());
+        if (merged.has(counter.id)) counter.id = makeId(existingIds);
+        const nextCounters = [counter, ...merged.values()];
+        const nextActiveId = counter.id;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ version: 1, activeId: nextActiveId, counters: nextCounters }));
+        counters = nextCounters;
+        activeCounterId = nextActiveId;
+        storageWritable = true;
+        return true;
+      } catch (_) {
+        storageWritable = false;
+        return false;
       }
     }
 
@@ -752,8 +1153,9 @@
       }
       if (!confirm("Import this backup? It will replace counters, activity history, and preferences currently stored on this device.")) return;
 
+      const importedCounters = { ...data.counters, counters: normalizeCounterRecords(data.counters.counters) };
       const entries = [
-        [STORAGE_KEY, JSON.stringify(data.counters)],
+        [STORAGE_KEY, JSON.stringify(importedCounters)],
         [ACTIVITY_KEY, JSON.stringify(data.activity)],
         [PREFERENCES_KEY, JSON.stringify(data.preferences)]
       ];
@@ -769,7 +1171,7 @@
         return;
       }
 
-      counters = data.counters.counters;
+      counters = importedCounters.counters;
       activeCounterId = counters.some(counter => counter.id === data.counters.activeId) ? data.counters.activeId : null;
       activityRecords = data.activity.records;
       preferences = { ...data.preferences };
@@ -778,6 +1180,7 @@
       activityWritable = true;
       preferencesWritable = true;
       undoByCounterId.clear();
+      incrementOverrideByCounterId.clear();
       displayedCounterId = null;
       syncThemeSetting();
       syncMotionSetting();
@@ -822,6 +1225,13 @@
       return counters.find(counter => counter.id === activeCounterId) || null;
     }
 
+    function activeIncrementValue(counter = activeCounter()) {
+      if (counter?.type === "simple") {
+        return incrementOverrideByCounterId.get(counter.id) ?? counter.settings?.defaultIncrement ?? incrementValue;
+      }
+      return incrementValue;
+    }
+
     function setView(view) {
       const showCounter = view === "counter" && activeCounter();
       const showSettings = view === "settings";
@@ -840,6 +1250,7 @@
       else if (showStatistics) renderStatistics();
       else if (showActivity) renderActivityHistory();
       else renderDashboard();
+      if (!showCounter && timeTicker) { clearInterval(timeTicker); timeTicker = null; timeTickerCounterId = null; }
       syncNavigation(showSettings ? "settings" : showStatistics ? "statistics" : showActivity ? "activity" : showCounter ? "counter" : "dashboard");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -883,9 +1294,21 @@
     function renderDetail(animateFrom = null) {
       const counter = activeCounter();
       if (!counter) return setView("dashboard");
+      const type = COUNTER_TYPE_LABELS[counter.type] ? counter.type : "simple";
+      const counterIncrement = activeIncrementValue(counter);
       document.getElementById("detail-name").textContent = counter.name;
       document.getElementById("detail-description").textContent = counter.description || "Keep a steady rhythm, one tap at a time.";
       document.getElementById("counter-section").style.setProperty("--counter-color", counter.color);
+      document.getElementById("counter-section").hidden = type !== "simple";
+      for (const [panelType, panelId] of [["daily-habit", "habit-counter-interface"], ["goal", "goal-counter-interface"], ["task", "task-counter-interface"], ["time", "time-counter-interface"]]) {
+        const panel = document.getElementById(panelId);
+        panel.hidden = type !== panelType;
+        panel.style.setProperty("--counter-accent", counter.themeColor || counter.color);
+      }
+      const settings = counter.settings || {};
+      document.getElementById("decrement").hidden = counter.type === "simple" && settings.allowDecrement === false;
+      document.getElementById("undo-counter").hidden = counter.type === "simple" && settings.enableUndo === false;
+      document.getElementById("reset-counter").hidden = counter.type === "simple" && settings.enableReset === false;
       if (displayedCounterId !== counter.id) {
         cancelAnimationFrame(countAnimationFrame);
         displayedCounterId = counter.id;
@@ -901,11 +1324,450 @@
       countButton.setAttribute("aria-label", `Current count ${counter.count}. Tap to increase.`);
       document.getElementById("decrement").disabled = counter.count <= 0;
       document.getElementById("decrement").style.opacity = counter.count <= 0 ? ".45" : "1";
-      document.getElementById("increment").setAttribute("aria-label", `Increase count by ${incrementValue}`);
+      document.getElementById("increment").setAttribute("aria-label", `Increase count by ${counterIncrement}`);
       document.getElementById("undo-counter").disabled = !undoByCounterId.has(counter.id);
-      document.querySelector(".counter-view .tap-hint").textContent = `Tap the number or plus to add ${incrementValue}`;
-      document.querySelectorAll(".step-option").forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.step) === incrementValue)));
+      document.querySelector(".counter-view .tap-hint").textContent = `Tap the number or plus to add ${counterIncrement}`;
+      document.querySelectorAll(".step-option").forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.step) === counterIncrement)));
+      if (type === "daily-habit") renderHabitInterface(counter);
+      if (type === "goal") renderGoalInterface(counter);
+      if (type === "task") renderTaskInterface(counter);
+      if (type === "time") renderTimeInterface(counter);
+      syncTimeTicker(counter);
       syncNavigation("counter");
+    }
+
+    function localDateKey(date = new Date()) {
+      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+    }
+
+    function dateFromKey(key) {
+      if (!validDateKey(key)) return null;
+      const [year, month, day] = key.split("-").map(Number);
+      return new Date(year, month - 1, day);
+    }
+
+    function addLocalDays(date, amount) {
+      const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      result.setDate(result.getDate() + amount);
+      return result;
+    }
+
+    function habitIsScheduled(counter, date) {
+      const settings = counter.settings || {};
+      if (settings.frequency !== "selected-days") return true;
+      const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+      return Array.isArray(settings.selectedDays) && settings.selectedDays.includes(weekdays[date.getDay()]);
+    }
+
+    function counterCreatedDateKey(counter) {
+      const date = new Date(counter.createdAt || Date.now());
+      return localDateKey(date);
+    }
+
+    function habitCurrentStreak(counter) {
+      const completed = new Set(counter.data.habit.completedDates);
+      const today = new Date();
+      const created = dateFromKey(counterCreatedDateKey(counter));
+      let cursor = today;
+      const todayKey = localDateKey(today);
+      if (habitIsScheduled(counter, today) && !completed.has(todayKey)) cursor = addLocalDays(today, -1);
+      let streak = 0;
+      while (cursor >= created && streak < 40000) {
+        const key = localDateKey(cursor);
+        if (habitIsScheduled(counter, cursor)) {
+          if (!completed.has(key)) break;
+          streak += 1;
+        }
+        cursor = addLocalDays(cursor, -1);
+      }
+      return streak;
+    }
+
+    function habitLongestStreak(counter) {
+      const completed = new Set(counter.data.habit.completedDates);
+      const today = new Date();
+      const created = dateFromKey(counterCreatedDateKey(counter));
+      let end = today;
+      if (habitIsScheduled(counter, today) && !completed.has(localDateKey(today))) end = addLocalDays(today, -1);
+      let best = 0, current = 0;
+      for (let date = created, dayIndex = 0; date <= end && dayIndex < 40000; date = addLocalDays(date, 1), dayIndex += 1) {
+        if (!habitIsScheduled(counter, date)) continue;
+        if (completed.has(localDateKey(date))) { current += 1; best = Math.max(best, current); }
+        else current = 0;
+      }
+      return best;
+    }
+
+    function renderHabitInterface(counter) {
+      const settings = counter.settings || {};
+      const completed = new Set(counter.data.habit.completedDates);
+      let cursor = habitCalendarCursorByCounterId.get(counter.id);
+      if (!cursor) {
+        cursor = new Date();
+        if (settings.calendarView === "monthly") cursor.setDate(1);
+        habitCalendarCursorByCounterId.set(counter.id, cursor);
+      }
+      const weekly = settings.calendarView === "weekly";
+      document.getElementById("habit-view-title").textContent = counter.name;
+      document.getElementById("habit-view-description").textContent = counter.description || "Tap a date to mark this habit complete.";
+      document.getElementById("habit-view-icon").textContent = counter.icon;
+      document.querySelectorAll("[data-habit-view]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.habitView === settings.calendarView)));
+      const grid = document.getElementById("habit-calendar-grid");
+      const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      let dates = [];
+      let title = "";
+      if (weekly) {
+        const monday = addLocalDays(cursor, -((cursor.getDay() + 6) % 7));
+        title = `${monday.toLocaleDateString(undefined, { month: "short", day: "numeric" })} – ${addLocalDays(monday, 6).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}`;
+        dates = Array.from({ length: 7 }, (_, index) => addLocalDays(monday, index));
+      } else {
+        const first = new Date(cursor.getFullYear(), cursor.getMonth(), 1);
+        const offset = (first.getDay() + 6) % 7;
+        const count = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 0).getDate();
+        title = cursor.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+        dates = Array.from({ length: offset }, () => null).concat(Array.from({ length: count }, (_, index) => new Date(cursor.getFullYear(), cursor.getMonth(), index + 1)));
+        while (dates.length % 7) dates.push(null);
+      }
+      document.getElementById("habit-calendar-title").textContent = `${counter.name} · ${title}`;
+      const todayKey = localDateKey();
+      const headers = weekdays.map(day => `<span class="habit-weekday" aria-hidden="true">${day}</span>`).join("");
+      const cells = dates.map(date => {
+        if (!date) return '<span class="habit-day is-outside" aria-hidden="true"></span>';
+        const key = localDateKey(date);
+        const isFuture = key > todayKey;
+        const isPastLocked = key < todayKey && settings.allowPreviousDateEditing !== true;
+        const complete = completed.has(key);
+        const label = `${date.toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}: ${complete ? "completed" : "not completed"}`;
+        return `<button class="habit-day ${complete ? "is-complete" : ""} ${key === todayKey ? "is-today" : ""}" type="button" data-habit-day="${key}" aria-label="${escapeHtml(label)}" aria-pressed="${complete}" ${isFuture || isPastLocked ? "disabled" : ""}>${date.getDate()}</button>`;
+      }).join("");
+      grid.innerHTML = headers + cells;
+      const now = new Date();
+      const start = new Date(now.getFullYear(), now.getMonth(), 1);
+      const finish = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const created = dateFromKey(counterCreatedDateKey(counter));
+      if (created > start) start.setTime(created.getTime());
+      let dueDates = 0;
+      for (let date = start; date <= finish; date = addLocalDays(date, 1)) if (habitIsScheduled(counter, date)) dueDates += 1;
+      const thisMonth = counter.data.habit.completedDates.filter(key => {
+        if (!key.startsWith(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-`) || key > todayKey || key < counterCreatedDateKey(counter)) return false;
+        return habitIsScheduled(counter, dateFromKey(key));
+      }).length;
+      document.getElementById("habit-month-count").textContent = String(thisMonth);
+      document.getElementById("habit-attendance").textContent = `${dueDates ? Math.round(thisMonth / dueDates * 100) : 0}%`;
+      document.getElementById("habit-current-streak").textContent = `${habitCurrentStreak(counter)} day${habitCurrentStreak(counter) === 1 ? "" : "s"}`;
+      document.getElementById("habit-longest-streak").textContent = `${habitLongestStreak(counter)} day${habitLongestStreak(counter) === 1 ? "" : "s"}`;
+    }
+
+    function setHabitCalendarView(view) {
+      const counter = activeCounter();
+      if (!counter || counter.type !== "daily-habit" || !["weekly", "monthly"].includes(view)) return;
+      counter.settings.calendarView = view;
+      counter.updatedAt = new Date().toISOString();
+      if (view === "monthly") habitCalendarCursorByCounterId.get(counter.id)?.setDate(1);
+      persist();
+      renderHabitInterface(counter);
+    }
+
+    function moveHabitCalendar(direction) {
+      const counter = activeCounter();
+      if (!counter || counter.type !== "daily-habit") return;
+      const cursor = habitCalendarCursorByCounterId.get(counter.id) || new Date();
+      if (counter.settings.calendarView === "weekly") cursor.setDate(cursor.getDate() + direction * 7);
+      else cursor.setMonth(cursor.getMonth() + direction, 1);
+      habitCalendarCursorByCounterId.set(counter.id, cursor);
+      renderHabitInterface(counter);
+    }
+
+    function changeHabitDate(counter, key) {
+      if (!validDateKey(key) || key > localDateKey()) return;
+      const settings = counter.settings || {};
+      if (key < localDateKey() && settings.allowPreviousDateEditing !== true) return;
+      const dates = new Set(counter.data.habit.completedDates);
+      const delta = dates.has(key) ? -1 : 1;
+      if (delta > 0) dates.add(key); else dates.delete(key);
+      counter.data.habit.completedDates = Array.from(dates).sort();
+      applyTypeCountDelta(counter, delta);
+    }
+
+    function renderGoalInterface(counter) {
+      const settings = counter.settings || {};
+      const target = Math.max(1, Number(settings.targetValue) || 1);
+      const current = Math.max(0, Number(counter.count) || 0);
+      const remaining = Math.max(0, target - current);
+      const percent = Math.min(100, Math.round(current / target * 100));
+      const unit = settings.measurementUnit || "units";
+      const deadlineKey = validDateKey(settings.goalDeadline) ? settings.goalDeadline : "";
+      const deadline = deadlineKey ? dateFromKey(deadlineKey).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "No deadline";
+      const overdue = deadlineKey && deadlineKey < localDateKey() && current < target;
+      document.getElementById("goal-view-title").textContent = counter.name;
+      document.getElementById("goal-view-description").textContent = counter.description || "Make steady progress toward your target.";
+      document.getElementById("goal-view-icon").textContent = counter.icon;
+      document.getElementById("goal-current-value").textContent = `${current.toLocaleString()} ${unit}`;
+      document.getElementById("goal-target-value").textContent = target.toLocaleString();
+      document.getElementById("goal-unit").textContent = unit;
+      document.getElementById("goal-progress-fill").style.setProperty("--goal-fill", `${percent}%`);
+      document.getElementById("goal-progressbar").setAttribute("aria-valuenow", String(percent));
+      document.getElementById("goal-progressbar").hidden = settings.progressDisplay !== "bar";
+      document.getElementById("goal-progress-ring-detail").hidden = settings.progressDisplay !== "ring";
+      document.getElementById("goal-progress-ring-detail").style.setProperty("--goal-fill", `${percent}%`);
+      document.getElementById("goal-ring-percent").textContent = `${percent}%`;
+      document.getElementById("goal-progress-value-detail").hidden = settings.progressDisplay !== "value";
+      document.getElementById("goal-progress-value-detail").textContent = `${percent}% complete · ${current.toLocaleString()} of ${target.toLocaleString()} ${unit}`;
+      document.getElementById("goal-status").textContent = current >= target ? "Goal completed" : overdue ? "Deadline passed · still in progress" : "In progress";
+      document.getElementById("goal-remaining").textContent = `${remaining.toLocaleString()} ${unit}`;
+      document.getElementById("goal-starting-value").textContent = `${Number(settings.startingValue) || 0} ${unit}`;
+      document.getElementById("goal-deadline").textContent = deadline;
+      document.querySelectorAll("[data-goal-change='-1']").forEach(button => button.disabled = current <= 0);
+    }
+
+    function isTaskComplete(task, dateKey = localDateKey()) {
+      return task.frequency === "daily" ? task.completedDates.includes(dateKey) : task.completed;
+    }
+
+    function renderTaskInterface(counter) {
+      const settings = counter.settings || {};
+      document.getElementById("task-view-title").textContent = counter.name;
+      document.getElementById("task-view-description").textContent = counter.description || "Add tasks and check them off as you go.";
+      document.getElementById("task-view-icon").textContent = counter.icon;
+      const categories = Array.from(new Set([...(settings.categories || []), ...counter.data.tasks.map(task => task.category)])).filter(Boolean);
+      document.getElementById("task-category-options").innerHTML = categories.map(category => `<option value="${escapeHtml(category)}"></option>`).join("");
+      const taskForm = document.getElementById("task-form");
+      if (taskEditorCounterId !== counter.id) {
+        taskForm.reset();
+        editingTaskId = null;
+        taskEditorCounterId = counter.id;
+        document.getElementById("task-edit-id").value = "";
+        document.getElementById("task-frequency-input").value = settings.taskFrequency || "daily";
+        document.getElementById("task-category-input").value = settings.categories?.[0] || "General";
+        document.getElementById("task-due-date-input").value = validDateKey(settings.dueDate) ? settings.dueDate : "";
+        document.getElementById("task-submit").textContent = "Add task";
+        document.getElementById("task-cancel-edit").hidden = true;
+      }
+      const list = document.getElementById("task-list");
+      const tasks = counter.data.tasks;
+      document.getElementById("task-count-label").textContent = `${tasks.length} task${tasks.length === 1 ? "" : "s"} · ${tasks.filter(task => isTaskComplete(task)).length} complete today`;
+      list.innerHTML = tasks.length ? tasks.map(task => {
+        const done = isTaskComplete(task);
+        const due = task.dueDate ? `Due ${dateFromKey(task.dueDate).toLocaleDateString(undefined, { month: "short", day: "numeric" })}` : "No due date";
+        return `<article class="task-item ${done ? "is-done" : ""}"><button class="task-toggle" type="button" data-task-toggle="${escapeHtml(task.id)}" aria-label="Mark ${escapeHtml(task.title)} ${done ? "pending" : "complete"}" aria-pressed="${done}">${done ? "✓" : ""}</button><div class="task-item-copy"><strong>${escapeHtml(task.title)}</strong><small>${escapeHtml(task.category)} · ${task.frequency === "daily" ? "Daily" : "One-time"} · ${escapeHtml(due)}</small></div><div class="task-item-actions"><button type="button" data-task-edit="${escapeHtml(task.id)}" aria-label="Edit ${escapeHtml(task.title)}">Edit</button><button type="button" data-task-delete="${escapeHtml(task.id)}" aria-label="Delete ${escapeHtml(task.title)}">×</button></div></article>`;
+      }).join("") : '<div class="task-empty">No tasks yet. Add your first task above.</div>';
+    }
+
+    function renderTimeClock(counter) {
+      const data = counter.data.time;
+      const unit = counter.settings.timeUnit === "hours" ? "hours" : "minutes";
+      const isRunning = Number.isFinite(data.runningSince);
+      const current = data.totalSeconds + (isRunning ? Math.max(0, (Date.now() - data.runningSince) / 1000) : 0);
+      const session = data.sessionStartedAt ? Math.max(0, current - data.sessionBaseSeconds) : 0;
+      document.getElementById("time-elapsed").textContent = formatSessionClock(session);
+      document.getElementById("time-unit-label").textContent = session >= 3600 ? "Hours : minutes : seconds" : "Minutes : seconds";
+      document.getElementById("time-state").textContent = isRunning ? "Timer running" : data.paused ? "Paused · ready to resume" : "Ready when you are";
+      document.getElementById("time-start").textContent = data.paused ? "Resume timer" : "Start timer";
+      document.getElementById("time-pause").hidden = !isRunning;
+      document.getElementById("time-stop").hidden = !data.sessionStartedAt;
+    }
+
+    function formatTrackedTime(seconds, unit) {
+      const safeSeconds = Math.max(0, Math.floor(seconds));
+      if (unit === "hours") {
+        const hours = Math.floor(safeSeconds / 3600);
+        const minutes = Math.floor((safeSeconds % 3600) / 60);
+        return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+      }
+      const minutes = Math.floor(safeSeconds / 60);
+      const remainder = safeSeconds % 60;
+      return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+    }
+
+    function formatSessionClock(seconds) {
+      const totalSeconds = Math.max(0, Math.floor(seconds));
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const remainder = totalSeconds % 60;
+      if (hours > 0) return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+      return `${String(Math.floor(totalSeconds / 60)).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+    }
+
+    function renderTimeInterface(counter) {
+      const settings = counter.settings || {};
+      document.getElementById("time-view-title").textContent = counter.name;
+      document.getElementById("time-view-description").textContent = counter.description || "Track time spent on this activity.";
+      document.getElementById("time-view-icon").textContent = counter.icon;
+      document.getElementById("time-unit-label").textContent = settings.timeUnit === "hours" ? "Hours : minutes" : "Minutes : seconds";
+      document.getElementById("time-controls").hidden = settings.startStopTimer === false;
+      document.getElementById("time-manual-form").hidden = settings.manualTimeEntry === false;
+      document.getElementById("time-total-summary").innerHTML = settings.totalTimeDisplay === false ? "" : `<p class="time-total-label">Total recorded</p><div class="time-total" style="font-size:clamp(24px,7vw,36px)">${formatTrackedTime(counter.data.time.totalSeconds, settings.timeUnit)} <span style="font-size:12px">${settings.timeUnit === "hours" ? "hours" : "minutes"}</span></div>`;
+      const entries = counter.data.time.entries.slice().sort((a, b) => Date.parse(b.endedAt || b.createdAt || 0) - Date.parse(a.endedAt || a.createdAt || 0)).slice(0, 6);
+      document.getElementById("time-entry-list").innerHTML = entries.length ? entries.map(entry => `<div class="time-entry"><span>${escapeHtml(entry.note || (entry.source === "timer" ? "Timer session" : "Manual entry"))}</span><strong>${formatTrackedTime(entry.durationSeconds, settings.timeUnit)}</strong></div>`).join("") : '<div class="time-empty">Recorded sessions will appear here.</div>';
+      renderTimeClock(counter);
+    }
+
+    function syncTimeTicker(counter) {
+      const shouldTick = counter.type === "time" && Number.isFinite(counter.data.time.runningSince);
+      if (!shouldTick) {
+        if (timeTicker) clearInterval(timeTicker);
+        timeTicker = null;
+        timeTickerCounterId = null;
+        return;
+      }
+      if (timeTicker && timeTickerCounterId === counter.id) return;
+      if (timeTicker) clearInterval(timeTicker);
+      timeTickerCounterId = counter.id;
+      timeTicker = window.setInterval(() => {
+        const active = activeCounter();
+        if (active?.id === timeTickerCounterId && Number.isFinite(active.data.time.runningSince)) renderTimeClock(active);
+      }, 1000);
+    }
+
+    function applyTypeCountDelta(counter, delta) {
+      const before = Number(counter.count) || 0;
+      const next = Math.max(0, before + delta);
+      const applied = next - before;
+      if (!applied) { persist(); renderDetail(); return; }
+      counter.count = next;
+      counter.updatedAt = new Date().toISOString();
+      recordActivity(counter, applied > 0 ? "increment" : "decrement", Math.abs(applied), before, next);
+      refresh();
+    }
+
+    function setTimeCounterTotal(counter) {
+      const unitSeconds = counter.settings.timeUnit === "hours" ? 3600 : 60;
+      const before = Number(counter.count) || 0;
+      const next = Math.round(counter.data.time.totalSeconds / unitSeconds * 10000) / 10000;
+      const delta = next - before;
+      counter.count = next;
+      counter.updatedAt = new Date().toISOString();
+      if (Math.abs(delta) > 0.0000001) recordActivity(counter, delta > 0 ? "increment" : "decrement", Math.abs(delta), before, next);
+      refresh();
+    }
+
+    function startTimeTimer(counter) {
+      if (counter.settings.startStopTimer === false) return;
+      const time = counter.data.time;
+      if (time.runningSince) return;
+      const now = Date.now();
+      time.runningSince = now;
+      if (!time.sessionStartedAt) {
+        time.sessionStartedAt = now;
+        time.sessionBaseSeconds = time.totalSeconds;
+      }
+      time.paused = false;
+      counter.updatedAt = new Date().toISOString();
+      persist();
+      renderDetail();
+    }
+
+    function pauseTimeTimer(counter) {
+      const time = counter.data.time;
+      if (!time.runningSince) return;
+      time.totalSeconds += Math.max(0, (Date.now() - time.runningSince) / 1000);
+      time.runningSince = null;
+      time.paused = true;
+      counter.updatedAt = new Date().toISOString();
+      setTimeCounterTotal(counter);
+    }
+
+    function stopTimeTimer(counter) {
+      const time = counter.data.time;
+      if (time.runningSince) time.totalSeconds += Math.max(0, (Date.now() - time.runningSince) / 1000);
+      const durationSeconds = Math.max(0, time.totalSeconds - time.sessionBaseSeconds);
+      if (durationSeconds > 0) time.entries.push({ id: `time-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`, source: "timer", durationSeconds, startedAt: new Date(time.sessionStartedAt || Date.now()).toISOString(), endedAt: new Date().toISOString(), note: "" });
+      time.runningSince = null;
+      time.sessionStartedAt = null;
+      time.sessionBaseSeconds = time.totalSeconds;
+      time.paused = false;
+      setTimeCounterTotal(counter);
+    }
+
+    function addManualTime(counter, amount, note) {
+      if (counter.settings.manualTimeEntry === false || !Number.isFinite(amount) || amount <= 0) return false;
+      const durationSeconds = amount * (counter.settings.timeUnit === "hours" ? 3600 : 60);
+      counter.data.time.totalSeconds += durationSeconds;
+      counter.data.time.entries.push({ id: `time-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`, source: "manual", durationSeconds, startedAt: null, endedAt: new Date().toISOString(), createdAt: new Date().toISOString(), note: note.trim() });
+      setTimeCounterTotal(counter);
+      return true;
+    }
+
+    function saveTaskFromForm(event) {
+      event.preventDefault();
+      const counter = activeCounter();
+      if (!counter || counter.type !== "task") return;
+      const title = document.getElementById("task-title-input").value.trim();
+      if (!title) return;
+      const taskId = document.getElementById("task-edit-id").value;
+      const category = document.getElementById("task-category-input").value.trim() || "General";
+      const frequency = document.getElementById("task-frequency-input").value === "daily" ? "daily" : "one-time";
+      const dueDateInput = document.getElementById("task-due-date-input").value;
+      const dueDate = validDateKey(dueDateInput) ? dueDateInput : "";
+      const existing = counter.data.tasks.find(task => task.id === taskId);
+      if (existing) {
+        const wasComplete = isTaskComplete(existing);
+        const today = localDateKey();
+        existing.title = title;
+        existing.category = category;
+        existing.completed = frequency === "one-time" && wasComplete;
+        if (frequency === "daily") {
+          existing.completedDates = existing.completedDates.filter(key => key !== today);
+          if (wasComplete) existing.completedDates.push(today);
+        }
+        existing.frequency = frequency;
+        existing.dueDate = dueDate;
+      } else {
+        const initiallyComplete = counter.settings.completionStatus === "completed";
+        counter.data.tasks.push({ id: `task-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`, title, category, frequency, dueDate, completed: initiallyComplete && frequency === "one-time", completedDates: initiallyComplete && frequency === "daily" ? [localDateKey()] : [] });
+        if (initiallyComplete) {
+          const before = counter.count;
+          counter.count += 1;
+          recordActivity(counter, "increment", 1, before, counter.count);
+        }
+      }
+      counter.updatedAt = new Date().toISOString();
+      document.getElementById("task-form").reset();
+      document.getElementById("task-edit-id").value = "";
+      editingTaskId = null;
+      document.getElementById("task-submit").textContent = "Add task";
+      document.getElementById("task-cancel-edit").hidden = true;
+      refresh();
+    }
+
+    function toggleTaskCompletion(counter, task) {
+      const wasComplete = isTaskComplete(task);
+      if (task.frequency === "daily") {
+        const today = localDateKey();
+        const completed = new Set(task.completedDates);
+        if (wasComplete) completed.delete(today); else completed.add(today);
+        task.completedDates = Array.from(completed).sort();
+      } else task.completed = !task.completed;
+      counter.updatedAt = new Date().toISOString();
+      applyTypeCountDelta(counter, wasComplete ? -1 : 1);
+    }
+
+    function editTask(counter, task) {
+      const form = document.getElementById("task-form");
+      document.getElementById("task-edit-id").value = task.id;
+      document.getElementById("task-title-input").value = task.title;
+      document.getElementById("task-category-input").value = task.category;
+      document.getElementById("task-frequency-input").value = task.frequency;
+      document.getElementById("task-due-date-input").value = task.dueDate || "";
+      document.getElementById("task-submit").textContent = "Save task";
+      document.getElementById("task-cancel-edit").hidden = false;
+      editingTaskId = task.id;
+      form.scrollIntoView({ behavior: animationsEnabled() ? "smooth" : "auto", block: "nearest" });
+      document.getElementById("task-title-input").focus();
+    }
+
+    function stopEditingTask() {
+      document.getElementById("task-form").reset();
+      document.getElementById("task-edit-id").value = "";
+      editingTaskId = null;
+      document.getElementById("task-submit").textContent = "Add task";
+      document.getElementById("task-cancel-edit").hidden = true;
+      const counter = activeCounter();
+      if (counter?.type === "task") {
+        document.getElementById("task-frequency-input").value = counter.settings.taskFrequency || "daily";
+        document.getElementById("task-category-input").value = counter.settings.categories?.[0] || "General";
+        document.getElementById("task-due-date-input").value = validDateKey(counter.settings.dueDate) ? counter.settings.dueDate : "";
+      }
     }
 
     function animateCountValue(from, to) {
@@ -938,6 +1800,328 @@
       document.getElementById("theme-select").value = preferences.theme;
       document.getElementById("default-increment").value = String(preferences.defaultIncrement);
       syncNavigation("settings");
+    }
+
+    const WIZARD_STEP_TITLES = ["Basic information", "Select counter type", "Customization", "Counter preview", "Create counter"];
+    const COUNTER_TYPE_LABELS = { simple: "Simple Counter", "daily-habit": "Daily Habit Tracker", goal: "Goal Tracker", task: "Task Tracker", time: "Time Tracker" };
+    const ICON_LABELS = ["Number", "Sparkle", "Books", "Water", "Exercise", "Plant", "Heart", "Star", "Target", "Coffee", "Meditation", "Music"];
+
+    function defaultCustomizations() {
+      return {
+        simple: { initialCount: 0, defaultIncrement: preferences.defaultIncrement, allowDecrement: true, enableUndo: true, enableReset: true },
+        "daily-habit": { frequency: "daily", selectedDays: ["mon", "wed", "fri"], calendarView: "weekly", completionGoal: 1, allowPreviousDateEditing: false },
+        goal: { targetValue: 100, startingValue: 0, measurementUnit: "times", goalDeadline: "", progressDisplay: "bar" },
+        task: { taskFrequency: "daily", categories: ["General", "Personal", "Work"], dueDate: "", completionStatus: "not-started" },
+        time: { timeUnit: "minutes", manualTimeEntry: true, startStopTimer: true, totalTimeDisplay: true }
+      };
+    }
+
+    function customizationFor(type = wizardState.counterType) {
+      const defaults = defaultCustomizations();
+      if (!defaults[type]) return {};
+      wizardState.customizations[type] ||= { ...defaults[type] };
+      return wizardState.customizations[type];
+    }
+
+    function customField(label, control, help = "", controlId = "") {
+      const helpId = controlId ? `${controlId}-help` : "";
+      return `<div class="custom-setting"><label ${controlId ? `for="${controlId}"` : ""}>${label}</label>${control}${help ? `<p class="custom-help" ${helpId ? `id="${helpId}"` : ""}>${help}</p>` : ""}</div>`;
+    }
+
+    function customNumber(key, label, value, { min = 0, step = 1, help = "" } = {}) {
+      const id = `custom-${key}`;
+      return customField(label, `<input id="${id}" type="number" data-custom-key="${key}" min="${min}" step="${step}" value="${escapeHtml(value)}" inputmode="decimal" aria-describedby="${id}-help">`, help, id);
+    }
+
+    function customText(key, label, value, { placeholder = "", help = "" } = {}) {
+      const id = `custom-${key}`;
+      return customField(label, `<input id="${id}" type="text" data-custom-key="${key}" value="${escapeHtml(value)}" placeholder="${escapeHtml(placeholder)}" aria-describedby="${id}-help">`, help, id);
+    }
+
+    function customDate(key, label, value, help = "") {
+      const id = `custom-${key}`;
+      return customField(label, `<input id="${id}" type="date" data-custom-key="${key}" value="${escapeHtml(value)}" aria-describedby="${id}-help">`, help, id);
+    }
+
+    function customSelect(key, label, value, options, help = "") {
+      const choices = options.map(([optionValue, optionLabel]) => `<option value="${escapeHtml(optionValue)}" ${value === optionValue ? "selected" : ""}>${escapeHtml(optionLabel)}</option>`).join("");
+      const id = `custom-${key}`;
+      return customField(label, `<select id="${id}" data-custom-key="${key}" aria-describedby="${id}-help">${choices}</select>`, help, id);
+    }
+
+    function customToggle(key, label, checked, help) {
+      return `<label class="custom-toggle"><span class="custom-toggle-copy"><strong>${label}</strong><small>${help}</small></span><input id="custom-${key}" type="checkbox" data-custom-key="${key}" aria-label="${label}" ${checked ? "checked" : ""}></label>`;
+    }
+
+    function customDays(values) {
+      const days = [["mon", "Mon"], ["tue", "Tue"], ["wed", "Wed"], ["thu", "Thu"], ["fri", "Fri"], ["sat", "Sat"], ["sun", "Sun"]];
+      const choices = days.map(([value, label]) => `<label class="custom-day"><input type="checkbox" data-custom-key="selectedDays" value="${value}" aria-label="${label}" ${values.includes(value) ? "checked" : ""}><span aria-hidden="true">${label}</span></label>`).join("");
+      return `<fieldset class="custom-setting"><legend class="group-label">Select days</legend><div class="custom-days">${choices}</div><p class="custom-help">Choose each day this habit should be tracked.</p></fieldset>`;
+    }
+
+    function renderCustomizationSettings() {
+      const type = wizardState.counterType;
+      const values = customizationFor(type);
+      let fields = "";
+      if (type === "simple") {
+        fields = customNumber("initialCount", "Initial count", values.initialCount, { help: "The value shown when this counter is first set up." }) +
+          customSelect("defaultIncrement", "Default increment value", String(values.defaultIncrement), [["1", "+1"], ["5", "+5"], ["10", "+10"], ["50", "+50"]], "Choose how much each tap adds by default.") +
+          customToggle("allowDecrement", "Allow decrement", values.allowDecrement, "Let the count be decreased from the counter screen.") +
+          customToggle("enableUndo", "Enable undo", values.enableUndo, "Allow the most recent count change to be reversed.") +
+          customToggle("enableReset", "Enable reset", values.enableReset, "Show the option to reset this counter to zero.");
+      } else if (type === "daily-habit") {
+        fields = customSelect("frequency", "Tracking frequency", values.frequency, [["daily", "Daily"], ["selected-days", "Selected days"]], "Choose whether this habit is tracked every day or on chosen days.") +
+          (values.frequency === "selected-days" ? customDays(values.selectedDays) : "") +
+          customSelect("calendarView", "Calendar view", values.calendarView, [["weekly", "Weekly calendar"], ["monthly", "Monthly calendar"]], "Choose the calendar layout used to review habit progress.") +
+          customNumber("completionGoal", "Completion goal", values.completionGoal, { min: 1, help: "How many completions count as meeting the goal for a tracking period." }) +
+          customToggle("allowPreviousDateEditing", "Allow previous date editing", values.allowPreviousDateEditing, "Allow a missed or completed habit to be corrected for an earlier date.");
+      } else if (type === "goal") {
+        fields = customNumber("targetValue", "Target value", values.targetValue, { min: 1, help: "The total value you want to reach." }) +
+          customNumber("startingValue", "Starting value", values.startingValue, { help: "The progress value to begin with." }) +
+          customText("measurementUnit", "Measurement unit", values.measurementUnit, { placeholder: "e.g. pages, kilometres", help: "Name the unit used for this goal, such as pages or kilometres." }) +
+          customDate("goalDeadline", "Goal deadline", values.goalDeadline, "Optional date by which you hope to reach your target.") +
+          customSelect("progressDisplay", "Progress display", values.progressDisplay, [["bar", "Progress bar"], ["ring", "Progress ring"], ["value", "Value only"]], "Choose how progress will be presented.");
+      } else if (type === "task") {
+        fields = customSelect("taskFrequency", "Task schedule", values.taskFrequency, [["daily", "Daily tasks"], ["one-time", "One-time tasks"]], "Choose whether tasks repeat each day or are completed once.") +
+          customText("categories", "Task categories", values.categories.join(", "), { placeholder: "e.g. Personal, Work", help: "Separate category names with commas. At least one category is required." }) +
+          customDate("dueDate", "Due date", values.dueDate, "Optional date to use as the default due date.") +
+          customSelect("completionStatus", "Completion status", values.completionStatus, [["not-started", "Not started"], ["in-progress", "In progress"], ["completed", "Completed"]], "Choose the initial status for tasks in this tracker.");
+      } else if (type === "time") {
+        fields = customSelect("timeUnit", "Time unit", values.timeUnit, [["minutes", "Minutes"], ["hours", "Hours"]], "Choose the unit used to display tracked time.") +
+          customToggle("manualTimeEntry", "Manual time entry", values.manualTimeEntry, "Allow time amounts to be entered directly.") +
+          customToggle("startStopTimer", "Start/stop timer", values.startStopTimer, "Allow a timer to be started and stopped for an activity.") +
+          customToggle("totalTimeDisplay", "Total time display", values.totalTimeDisplay, "Show the accumulated time total.");
+      }
+      document.getElementById("customization-content").innerHTML = fields;
+      renderedCustomizationType = type;
+      document.getElementById("customization-error").textContent = "";
+    }
+
+    function syncCustomizationState() {
+      const type = wizardState.counterType;
+      const container = document.getElementById("customization-content");
+      if (!type || renderedCustomizationType !== type || !container.querySelector("[data-custom-key]")) return;
+      const values = customizationFor(type);
+      container.querySelectorAll("[data-custom-key]").forEach(input => {
+        const key = input.dataset.customKey;
+        if (key === "selectedDays") return;
+        if (input.type === "checkbox") values[key] = input.checked;
+        else if (input.type === "number") values[key] = input.value === "" ? "" : Number(input.value);
+        else if (key === "defaultIncrement") values[key] = Number(input.value);
+        else if (key === "categories") values[key] = input.value.split(",").map(item => item.trim()).filter(Boolean);
+        else values[key] = input.value;
+      });
+      if (type === "daily-habit") {
+        values.selectedDays = Array.from(container.querySelectorAll('[data-custom-key="selectedDays"]:checked'), input => input.value);
+      }
+    }
+
+    function validateCustomization() {
+      syncCustomizationState();
+      const type = wizardState.counterType;
+      const values = customizationFor(type);
+      let message = "";
+      let invalidField = "";
+      if (type === "simple" && (!Number.isFinite(values.initialCount) || values.initialCount < 0)) {
+        message = "Enter an initial count of zero or more."; invalidField = "initialCount";
+      } else if (type === "simple" && ![1, 5, 10, 50].includes(values.defaultIncrement)) {
+        message = "Choose a supported default increment."; invalidField = "defaultIncrement";
+      } else if (type === "daily-habit" && !["daily", "selected-days"].includes(values.frequency)) {
+        message = "Choose a tracking frequency."; invalidField = "frequency";
+      } else if (type === "daily-habit" && !["weekly", "monthly"].includes(values.calendarView)) {
+        message = "Choose a weekly or monthly calendar."; invalidField = "calendarView";
+      } else if (type === "daily-habit" && (!Number.isInteger(values.completionGoal) || values.completionGoal < 1)) {
+        message = "Set a completion goal of at least 1."; invalidField = "completionGoal";
+      } else if (type === "daily-habit" && values.frequency === "selected-days" && !values.selectedDays.length) {
+        message = "Select at least one day for this habit."; invalidField = "selectedDays";
+      } else if (type === "goal" && (!Number.isFinite(values.targetValue) || values.targetValue <= 0)) {
+        message = "Enter a target greater than zero."; invalidField = "targetValue";
+      } else if (type === "goal" && (!Number.isFinite(values.startingValue) || values.startingValue < 0)) {
+        message = "Enter a starting value of zero or more."; invalidField = "startingValue";
+      } else if (type === "goal" && !values.measurementUnit.trim()) {
+        message = "Enter a measurement unit, such as pages or kilometres."; invalidField = "measurementUnit";
+      } else if (type === "goal" && !["bar", "ring", "value"].includes(values.progressDisplay)) {
+        message = "Choose a progress display style."; invalidField = "progressDisplay";
+      } else if (type === "task" && !values.categories.length) {
+        message = "Enter at least one task category."; invalidField = "categories";
+      } else if (type === "task" && !["daily", "one-time"].includes(values.taskFrequency)) {
+        message = "Choose a daily or one-time task schedule."; invalidField = "taskFrequency";
+      } else if (type === "task" && !["not-started", "in-progress", "completed"].includes(values.completionStatus)) {
+        message = "Choose an initial task completion status."; invalidField = "completionStatus";
+      } else if (type === "time" && !["minutes", "hours"].includes(values.timeUnit)) {
+        message = "Choose minutes or hours as the time unit."; invalidField = "timeUnit";
+      }
+      document.getElementById("customization-error").textContent = message;
+      if (message) {
+        (document.getElementById(`custom-${invalidField}`) || document.querySelector(`[data-custom-key="${invalidField}"]`))?.focus();
+        return false;
+      }
+      return true;
+    }
+
+    function syncWizardState() {
+      wizardState.name = document.getElementById("counter-name").value;
+      wizardState.description = document.getElementById("counter-description").value;
+      wizardState.icon = form.querySelector("input[name=icon]:checked")?.value || ICONS[0];
+      wizardState.color = form.querySelector("input[name=color]:checked")?.value || COLORS[0].value;
+    }
+
+    function updateWizardPreview() {
+      syncWizardState();
+      const name = wizardState.name.trim() || "Your counter";
+      const icon = wizardState.icon;
+      const color = wizardState.color;
+      const colorName = COLORS.find(item => item.value === color)?.name || COLORS[0].name;
+      document.getElementById("wizard-summary-name").textContent = name;
+      document.getElementById("wizard-summary-type").textContent = COUNTER_TYPE_LABELS[wizardState.counterType] || "Choose a type";
+      document.getElementById("wizard-summary-style").textContent = `${icon} · ${colorName}`;
+      if (wizardState.counterType) renderCounterPreview();
+    }
+
+    function previewHeader(type, icon, name, description, color) {
+      return `<article class="live-preview" style="--preview-accent:${color}"><header class="live-preview-head"><span class="live-preview-icon" aria-hidden="true">${escapeHtml(icon)}</span><div class="live-preview-heading"><h3>${escapeHtml(name || "Your counter")}</h3><p>${escapeHtml(description || "A live look at your new counter.")}</p></div><span class="preview-type-pill">${escapeHtml(COUNTER_TYPE_LABELS[type])}</span></header>`;
+    }
+
+    function renderSimpleCounterPreview(base, values) {
+      const count = Number.isFinite(Number(values.initialCount)) ? Number(values.initialCount) : 0;
+      const features = [
+        [values.allowDecrement, "Decrement"], [values.enableUndo, "Undo"], [values.enableReset, "Reset"]
+      ].filter(([enabled]) => enabled).map(([, label]) => `<span class="preview-chip">${label}</span>`).join("");
+      return `${base}<div class="simple-preview-body"><div><span class="preview-value-label">Initial count</span><strong class="preview-value">${count.toLocaleString()}</strong><p class="preview-detail">Each tap adds ${Number(values.defaultIncrement) || 1}.</p></div><div class="preview-count-ring"><button type="button" disabled aria-label="Illustrative count button">${escapeHtml(wizardState.icon)}</button></div></div><div class="preview-settings-row"><span class="preview-chip">+${Number(values.defaultIncrement) || 1} per tap</span>${features || "<span class=\"preview-chip\">Basic controls</span>"}</div></article>`;
+    }
+
+    function renderHabitPreview(base, values, name) {
+      const weekly = values.calendarView === "weekly";
+      const labels = ["M", "T", "W", "T", "F", "S", "S"];
+      let days = "";
+      let calendarTitle = "";
+      if (weekly) {
+        const today = new Date();
+        const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - ((today.getDay() + 6) % 7));
+        calendarTitle = `Week of ${monday.toLocaleDateString(undefined, { month: "short", day: "numeric" })}`;
+        days = labels.map((label, index) => {
+          const date = new Date(monday);
+          date.setDate(monday.getDate() + index);
+          const complete = [0, 2, 4].includes(index);
+          return `<span class="preview-calendar-day ${complete ? "done" : ""} ${date.toDateString() === today.toDateString() ? "today" : ""}" title="${complete ? "Sample completed" : "Sample incomplete"} · ${date.toLocaleDateString()}">${date.getDate()}</span>`;
+        }).join("");
+      } else {
+        const today = new Date();
+        const first = new Date(today.getFullYear(), today.getMonth(), 1);
+        const count = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+        const offset = (first.getDay() + 6) % 7;
+        calendarTitle = today.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+        const cells = Array.from({ length: offset }, () => '<span class="preview-calendar-day blank" aria-hidden="true"></span>');
+        for (let day = 1; day <= count; day++) {
+          const complete = [3, 8, 13, 18, 23].includes(day);
+          cells.push(`<span class="preview-calendar-day ${complete ? "done" : ""} ${day === today.getDate() ? "today" : ""}" title="${complete ? "Sample completed" : "Sample incomplete"} · ${calendarTitle} ${day}">${day}</span>`);
+        }
+        days = cells.join("");
+      }
+      const selectedDays = (values.selectedDays || []).map(day => ({ mon:"Mon", tue:"Tue", wed:"Wed", thu:"Thu", fri:"Fri", sat:"Sat", sun:"Sun" }[day] || day)).join(", ");
+      const frequency = values.frequency === "selected-days" ? `Selected days${selectedDays ? ` · ${selectedDays}` : ""}` : "Daily habit";
+      return `${base}<div class="preview-calendar-top"><strong>${escapeHtml(name || "Habit")} calendar</strong><span>${escapeHtml(calendarTitle)}</span></div><div class="preview-calendar">${labels.map(label => `<span class="preview-calendar-label">${label}</span>`).join("")}${days}</div><div class="preview-legend"><span>Sample completed</span><span class="incomplete">Not completed</span></div><div class="preview-settings-row"><span class="preview-chip">${escapeHtml(frequency)}</span><span class="preview-chip">${Number(values.completionGoal) || 1} per period</span><span class="preview-chip">${weekly ? "Weekly view" : "Monthly view"}</span><span class="preview-chip">Edit previous dates ${values.allowPreviousDateEditing ? "on" : "off"}</span></div></article>`;
+    }
+
+    function renderGoalPreview(base, values) {
+      const target = Math.max(1, Number(values.targetValue) || 1);
+      const start = Math.max(0, Number(values.startingValue) || 0);
+      const percentage = Math.min(100, Math.round(start / target * 100));
+      const unit = values.measurementUnit.trim() || "units";
+      const deadline = values.goalDeadline ? new Date(`${values.goalDeadline}T00:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" }) : "No deadline set";
+      let progress = `<div class="goal-progress-track" role="img" aria-label="${percentage}% progress"><span class="goal-progress-fill" style="--goal-progress:${percentage}%"></span></div>`;
+      if (values.progressDisplay === "ring") progress = `<div class="goal-progress-ring" style="--goal-progress:${percentage}%"><strong>${percentage}%</strong></div>`;
+      if (values.progressDisplay === "value") progress = `<p class="preview-detail">${percentage}% complete · ${start.toLocaleString()} of ${target.toLocaleString()} ${escapeHtml(unit)}</p>`;
+      return `${base}<div class="goal-preview-top"><div><span class="preview-value-label">Progress</span><div class="goal-preview-value">${start.toLocaleString()} <small>/ ${target.toLocaleString()} ${escapeHtml(unit)}</small></div></div><span class="goal-preview-percent">${percentage}%</span></div>${progress}<div class="goal-meta"><span>Starting at ${start.toLocaleString()} ${escapeHtml(unit)}</span><span>${escapeHtml(deadline)}</span></div></article>`;
+    }
+
+    function renderTaskPreview(base, values) {
+      const categories = values.categories.length ? values.categories : ["General"];
+      const status = values.completionStatus;
+      const firstDone = status === "completed";
+      const secondDone = status === "completed";
+      const dateLabel = values.dueDate ? new Date(`${values.dueDate}T00:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" }) : "No due date";
+      const tasks = ["Review today’s priorities", "Finish one focused task", "Plan the next step"];
+      const taskRows = tasks.map((task, index) => {
+        const done = index === 0 ? firstDone : index === 1 ? secondDone : false;
+        return `<div class="task-preview-row ${done ? "done" : ""}"><span class="task-preview-check" aria-hidden="true">${done ? "✓" : ""}</span><strong>${task}</strong><small>${escapeHtml(categories[index % categories.length])}</small></div>`;
+      }).join("");
+      return `${base}<p class="preview-section-title">${values.taskFrequency === "daily" ? "Daily task list" : "One-time task list"} · Sample</p><div class="task-preview-list">${taskRows}</div><div class="preview-settings-row">${categories.map(category => `<span class="preview-chip">${escapeHtml(category)}</span>`).join("")}</div><div class="goal-meta"><span>Status: ${escapeHtml(status.replaceAll("-", " "))}</span><span>Due: ${escapeHtml(dateLabel)}</span></div></article>`;
+    }
+
+    function renderTimePreview(base, values) {
+      const unit = values.timeUnit === "hours" ? "hours" : "minutes";
+      const unitShort = values.timeUnit === "hours" ? "HRS" : "MIN";
+      return `${base}<div class="time-preview-face"><span class="time-preview-caption">Timer preview</span><div class="time-preview-clock">00:00</div><span class="time-preview-caption">${unitShort} : SEC</span><button type="button" class="preview-start-button" disabled>${values.startStopTimer ? "▶ Start timer" : "Timer disabled"}</button></div><div class="preview-settings-row"><span class="preview-chip">${unit[0].toUpperCase()}${unit.slice(1)}</span><span class="preview-chip">Manual entry ${values.manualTimeEntry ? "on" : "off"}</span>${values.totalTimeDisplay ? `<span class="preview-chip">Total: 0 ${unit}</span>` : ""}</div></article>`;
+    }
+
+    function renderCounterPreview() {
+      syncCustomizationState();
+      const type = wizardState.counterType;
+      const safeColor = COLORS.some(color => color.value === wizardState.color) ? wizardState.color : COLORS[0].value;
+      const name = wizardState.name.trim() || "Your counter";
+      const base = previewHeader(type, wizardState.icon, name, wizardState.description.trim(), safeColor);
+      const values = customizationFor(type);
+      const renderers = {
+        simple: () => renderSimpleCounterPreview(base, values),
+        "daily-habit": () => renderHabitPreview(base, values, name),
+        goal: () => renderGoalPreview(base, values),
+        task: () => renderTaskPreview(base, values),
+        time: () => renderTimePreview(base, values)
+      };
+      document.getElementById("wizard-preview").innerHTML = renderers[type]?.() || "";
+    }
+
+    function renderWizardStep(step, focus = true) {
+      wizardStep = Math.max(1, Math.min(5, step));
+      if (wizardStep === 3) renderCustomizationSettings();
+      document.querySelectorAll("[data-wizard-panel]").forEach(panel => {
+        panel.hidden = Number(panel.dataset.wizardPanel) !== wizardStep;
+      });
+      document.querySelectorAll("[data-wizard-nav]").forEach(button => {
+        const buttonStep = Number(button.dataset.wizardNav);
+        if (buttonStep === wizardStep) button.setAttribute("aria-current", "step");
+        else button.removeAttribute("aria-current");
+      });
+      document.getElementById("wizard-step-label").textContent = `Step ${wizardStep} of 5`;
+      document.getElementById("wizard-step-title").textContent = WIZARD_STEP_TITLES[wizardStep - 1];
+      document.getElementById("wizard-progressbar").setAttribute("aria-valuenow", String(wizardStep));
+      document.getElementById("wizard-progress-fill").style.width = `${wizardStep * 20}%`;
+      document.getElementById("wizard-back").hidden = wizardStep === 1;
+      document.getElementById("wizard-next").hidden = wizardStep === 5;
+      document.getElementById("save-counter").hidden = wizardStep !== 5;
+      updateWizardPreview();
+      if (focus) document.querySelector(`[data-wizard-panel="${wizardStep}"]`)?.focus({ preventScroll: true });
+    }
+
+    function setWizardStep(step, { focus = true } = {}) {
+      const nameInput = document.getElementById("counter-name");
+      syncWizardState();
+      syncCustomizationState();
+      if (step > 1 && !wizardState.name.trim()) {
+        document.getElementById("counter-name-error").textContent = "Please enter a counter name before continuing.";
+        nameInput.setAttribute("aria-invalid", "true");
+        renderWizardStep(1);
+        nameInput.focus();
+        return false;
+      }
+      document.getElementById("counter-name-error").textContent = "";
+      nameInput.removeAttribute("aria-invalid");
+      if (step > 2 && !wizardState.counterType) {
+        document.getElementById("counter-type-error").textContent = "Select one counter type to continue.";
+        renderWizardStep(2);
+        document.querySelector("[data-counter-type]")?.focus();
+        return false;
+      }
+      document.getElementById("counter-type-error").textContent = "";
+      if (step > 3) {
+        if (wizardStep !== 3) renderWizardStep(3, false);
+        if (!validateCustomization()) {
+          return false;
+        }
+      }
+      renderWizardStep(step, focus);
+      return true;
     }
 
     function localDayKey(date) {
@@ -1098,12 +2282,30 @@
     function openEditor(counter = null) {
       editingCounterId = counter?.id || null;
       document.getElementById("dialog-title").textContent = counter ? "Edit counter" : "Create a counter";
-      document.querySelector(".dialog-head p").textContent = counter ? "Update the details for this counter." : "Make it yours with a name, icon, and colour.";
-      document.getElementById("save-counter").textContent = counter ? "Save changes" : "Create counter";
+      document.getElementById("dialog-subtitle").textContent = counter ? "Update your counter details in a few simple steps." : "Personalize your next tally in a few simple steps.";
+      document.getElementById("save-counter").textContent = counter ? "Save changes" : "Create Counter";
       document.getElementById("counter-name").value = counter?.name || "";
       document.getElementById("counter-description").value = counter?.description || "";
-      document.getElementById("icon-choices").innerHTML = ICONS.map((icon, index) => `<label class="icon-choice"><input type="radio" name="icon" value="${icon}" aria-label="Icon choice ${index + 1}" ${icon === (counter?.icon || ICONS[0]) ? "checked" : ""}><span aria-hidden="true">${icon}</span></label>`).join("");
-      document.getElementById("color-choices").innerHTML = COLORS.map(color => `<label class="color-choice" title="${color.name}"><input type="radio" name="color" value="${color.value}" aria-label="${color.name}" ${color.value === (counter?.color || COLORS[0].value) ? "checked" : ""}><span style="--swatch:${color.value}" aria-hidden="true"></span></label>`).join("");
+      wizardState = {
+        name: counter?.name || "",
+        description: counter?.description || "",
+        icon: counter?.icon || ICONS[0],
+        color: counter?.color || COLORS[0].value,
+        counterType: counter ? "simple" : "",
+        customizations: defaultCustomizations()
+      };
+      document.getElementById("customization-content").replaceChildren();
+      renderedCustomizationType = "";
+      document.getElementById("counter-name-error").textContent = "";
+      document.getElementById("counter-type-error").textContent = "";
+      document.getElementById("counter-name").removeAttribute("aria-invalid");
+      document.querySelectorAll("[data-counter-type]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.counterType === wizardState.counterType)));
+      document.getElementById("icon-choices").innerHTML = ICONS.map((icon, index) => `<label class="icon-choice" title="${ICON_LABELS[index]}"><input type="radio" name="icon" value="${icon}" aria-label="${ICON_LABELS[index]} icon" ${icon === wizardState.icon ? "checked" : ""}><span aria-hidden="true">${icon}</span></label>`).join("");
+      document.getElementById("color-choices").innerHTML = COLORS.map(color => `<label class="color-choice"><input type="radio" name="color" value="${color.value}" aria-label="${color.name} theme colour" ${color.value === wizardState.color ? "checked" : ""}><span class="color-choice-card" aria-hidden="true" style="--swatch:${color.value}"><i></i><small>${color.name}</small></span></label>`).join("");
+      document.getElementById("wizard-finish-status").hidden = true;
+      document.getElementById("wizard-finish-status").textContent = "";
+      wizardStep = 1;
+      setWizardStep(1, { focus: false });
       dialog.showModal();
       document.getElementById("counter-name").focus();
     }
@@ -1114,6 +2316,7 @@
       recordActivity(counter, "deleted", 0, counter.count, 0);
       counters = counters.filter(item => item.id !== id);
       undoByCounterId.delete(id);
+      incrementOverrideByCounterId.delete(id);
       if (activeCounterId === id) activeCounterId = counters[0]?.id || null;
       refresh();
       setView("dashboard");
@@ -1129,6 +2332,40 @@
 
     document.getElementById("create-counter").addEventListener("click", () => openEditor());
     document.getElementById("empty-create").addEventListener("click", () => openEditor());
+    document.getElementById("wizard-next").addEventListener("click", () => setWizardStep(wizardStep + 1));
+    document.getElementById("wizard-back").addEventListener("click", () => setWizardStep(wizardStep - 1));
+    document.querySelectorAll("[data-wizard-nav]").forEach(button => {
+      button.addEventListener("click", () => setWizardStep(Number(button.dataset.wizardNav)));
+    });
+    document.querySelectorAll("[data-counter-type]").forEach(button => {
+      button.addEventListener("click", () => {
+        wizardState.counterType = button.dataset.counterType;
+        document.getElementById("counter-type-error").textContent = "";
+        document.querySelectorAll("[data-counter-type]").forEach(option => option.setAttribute("aria-pressed", String(option === button)));
+        updateWizardPreview();
+      });
+    });
+    form.addEventListener("input", event => {
+      if (event.target.matches("[data-custom-key]")) {
+        syncCustomizationState();
+        document.getElementById("customization-error").textContent = "";
+      }
+      syncWizardState();
+      if (event.target.id === "counter-name" && wizardState.name.trim()) {
+        document.getElementById("counter-name-error").textContent = "";
+        event.target.removeAttribute("aria-invalid");
+      }
+      updateWizardPreview();
+    });
+    form.addEventListener("change", event => {
+      if (event.target.matches("[data-custom-key]")) {
+        syncCustomizationState();
+        document.getElementById("customization-error").textContent = "";
+        if (event.target.dataset.customKey === "frequency") renderCustomizationSettings();
+      }
+      syncWizardState();
+      updateWizardPreview();
+    });
     document.getElementById("close-dialog").addEventListener("click", () => dialog.close());
     document.getElementById("cancel-dialog").addEventListener("click", () => dialog.close());
     document.getElementById("back-to-dashboard").addEventListener("click", () => setView("dashboard"));
@@ -1153,7 +2390,70 @@
     });
     document.getElementById("reset-counter").addEventListener("click", () => {
       const counter = activeCounter();
+      if (counter?.type === "simple" && counter.settings?.enableReset === false) return;
       if (counter && confirm(`Reset “${counter.name}” to zero?`)) applyCountChange(counter, 0, { activityType: "reset" });
+    });
+    document.getElementById("habit-calendar-previous").addEventListener("click", () => moveHabitCalendar(-1));
+    document.getElementById("habit-calendar-next").addEventListener("click", () => moveHabitCalendar(1));
+    document.querySelectorAll("[data-habit-view]").forEach(button => button.addEventListener("click", () => setHabitCalendarView(button.dataset.habitView)));
+    document.getElementById("habit-calendar-grid").addEventListener("click", event => {
+      const button = event.target.closest("[data-habit-day]");
+      const counter = activeCounter();
+      if (button && counter?.type === "daily-habit") changeHabitDate(counter, button.dataset.habitDay);
+    });
+    document.querySelectorAll("[data-goal-change]").forEach(button => button.addEventListener("click", () => {
+      const counter = activeCounter();
+      if (!counter || counter.type !== "goal") return;
+      const direction = Number(button.dataset.goalChange);
+      applyCountChange(counter, Math.max(0, counter.count + direction));
+    }));
+    document.getElementById("task-form").addEventListener("submit", saveTaskFromForm);
+    document.getElementById("task-cancel-edit").addEventListener("click", stopEditingTask);
+    document.getElementById("task-list").addEventListener("click", event => {
+      const counter = activeCounter();
+      if (!counter || counter.type !== "task") return;
+      const toggle = event.target.closest("[data-task-toggle]");
+      const edit = event.target.closest("[data-task-edit]");
+      const remove = event.target.closest("[data-task-delete]");
+      const id = toggle?.dataset.taskToggle || edit?.dataset.taskEdit || remove?.dataset.taskDelete;
+      const task = counter.data.tasks.find(item => item.id === id);
+      if (!task) return;
+      if (toggle) toggleTaskCompletion(counter, task);
+      else if (edit) editTask(counter, task);
+      else if (remove && confirm(`Delete “${task.title}”?`)) {
+        const wasComplete = isTaskComplete(task);
+        counter.data.tasks = counter.data.tasks.filter(item => item.id !== id);
+        counter.updatedAt = new Date().toISOString();
+        if (wasComplete) applyTypeCountDelta(counter, -1);
+        else refresh();
+      }
+    });
+    document.getElementById("time-start").addEventListener("click", () => { const counter = activeCounter(); if (counter?.type === "time") startTimeTimer(counter); });
+    document.getElementById("time-pause").addEventListener("click", () => { const counter = activeCounter(); if (counter?.type === "time") pauseTimeTimer(counter); });
+    document.getElementById("time-stop").addEventListener("click", () => { const counter = activeCounter(); if (counter?.type === "time") stopTimeTimer(counter); });
+    document.getElementById("time-manual-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const counter = activeCounter();
+      const amount = Number(document.getElementById("time-manual-value").value);
+      if (counter?.type !== "time" || !addManualTime(counter, amount, document.getElementById("time-manual-note").value)) return;
+      event.currentTarget.reset();
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState !== "visible" || currentView !== "counter") return;
+      const counter = activeCounter();
+      if (counter?.type === "time") renderTimeClock(counter);
+    });
+    window.addEventListener("pagehide", () => {
+      if (timeTicker) clearInterval(timeTicker);
+      timeTicker = null;
+      timeTickerCounterId = null;
+    });
+    window.addEventListener("pageshow", () => {
+      const counter = activeCounter();
+      if (currentView === "counter" && counter?.type === "time") {
+        renderTimeClock(counter);
+        syncTimeTicker(counter);
+      }
     });
     function addCountEffects(event) {
       if (!animationsEnabled()) return;
@@ -1222,6 +2522,7 @@
       const animateFrom = displayedCounterId === counter.id ? displayedCount : before;
       if (recordUndo && !unchanged) undoByCounterId.set(counter.id, before);
       counter.count = nextCount;
+      counter.updatedAt = new Date().toISOString();
       const type = activityType || (nextCount > before ? "increment" : "decrement");
       recordActivity(counter, type, type === "reset" ? before : Math.abs(nextCount - before), before, nextCount);
       if (unchanged) { refresh(); return; }
@@ -1235,16 +2536,18 @@
 
     function increment(event = null) {
       const counter = activeCounter();
-      if (counter) applyCountChange(counter, counter.count + incrementValue, { event, celebrate: true });
+      if (counter) applyCountChange(counter, counter.count + activeIncrementValue(counter), { event, celebrate: true });
     }
 
     function decrement(event = null) {
       const counter = activeCounter();
+      if (counter?.type === "simple" && counter.settings?.allowDecrement === false) return;
       if (counter && counter.count > 0) applyCountChange(counter, Math.max(0, counter.count - 1), { event, activityType: "decrement" });
     }
 
     function undoCount() {
       const counter = activeCounter();
+      if (counter?.type === "simple" && counter.settings?.enableUndo === false) return;
       if (!counter || !undoByCounterId.has(counter.id)) return;
       const previous = undoByCounterId.get(counter.id);
       undoByCounterId.delete(counter.id);
@@ -1257,6 +2560,15 @@
     document.getElementById("undo-counter").addEventListener("click", undoCount);
     document.querySelectorAll(".step-option").forEach(button => button.addEventListener("click", () => {
       incrementValue = Number(button.dataset.step);
+      const counter = activeCounter();
+      if (counter) {
+        incrementOverrideByCounterId.set(counter.id, incrementValue);
+        if (counter.type === "simple") {
+          counter.settings.defaultIncrement = incrementValue;
+          counter.updatedAt = new Date().toISOString();
+          persist();
+        }
+      }
       preferences.defaultIncrement = incrementValue;
       savePreferences();
       renderDetail();
@@ -1307,20 +2619,60 @@
 
     form.addEventListener("submit", event => {
       event.preventDefault();
+      syncWizardState();
+      syncCustomizationState();
       const name = document.getElementById("counter-name").value.trim();
       const description = document.getElementById("counter-description").value.trim();
       const icon = form.querySelector("input[name=icon]:checked")?.value || ICONS[0];
       const color = form.querySelector("input[name=color]:checked")?.value || COLORS[0].value;
       if (!name || !ICONS.includes(icon) || !COLORS.some(item => item.value === color)) return;
+      if (!editingCounterId) {
+        if (createSubmissionInProgress) return;
+        if (!COUNTER_TYPE_LABELS[wizardState.counterType]) {
+          setWizardStep(2);
+          document.getElementById("counter-type-error").textContent = "Select one counter type before creating this counter.";
+          return;
+        }
+        if (wizardStep !== 3) renderWizardStep(3, false);
+        if (!validateCustomization()) return;
+        createSubmissionInProgress = true;
+        const submitButton = document.getElementById("save-counter");
+        const status = document.getElementById("wizard-finish-status");
+        submitButton.disabled = true;
+        submitButton.setAttribute("aria-busy", "true");
+        try {
+          const now = new Date().toISOString();
+          const settings = JSON.parse(JSON.stringify(customizationFor(wizardState.counterType)));
+          const initialCount = wizardState.counterType === "simple" ? settings.initialCount
+            : wizardState.counterType === "goal" ? settings.startingValue : 0;
+          const counter = normalizeCounterRecord({
+            id: makeId(), name, description, icon, color, themeColor: color,
+            type: wizardState.counterType, settings, count: initialCount, createdAt: now, updatedAt: now
+          });
+          if (!persistNewCounter(counter)) {
+            status.textContent = "TallyX could not save this counter. Existing stored data was left unchanged; check browser storage and try again.";
+            status.hidden = false;
+            renderStorageStatus();
+            return;
+          }
+          recordActivity(counter, "created", 0, 0, counter.count);
+          dialog.close();
+          refresh();
+          openCounter(counter.id);
+        } catch (_) {
+          status.textContent = "TallyX could not create this counter. No incomplete counter was added.";
+          status.hidden = false;
+        } finally {
+          createSubmissionInProgress = false;
+          submitButton.disabled = false;
+          submitButton.removeAttribute("aria-busy");
+        }
+        return;
+      }
       if (editingCounterId) {
         const counter = counters.find(item => item.id === editingCounterId);
-        if (counter) Object.assign(counter, { name, description, icon, color });
+        if (counter) Object.assign(counter, { name, description, icon, color, themeColor: color, updatedAt: new Date().toISOString() });
         activeCounterId = editingCounterId;
-      } else {
-        const counter = { id: makeId(), name, description, icon, color, count: 0 };
-        counters.unshift(counter);
-        activeCounterId = counter.id;
-        recordActivity(counter, "created", 0, 0, counter.count);
       }
       dialog.close();
       refresh();
